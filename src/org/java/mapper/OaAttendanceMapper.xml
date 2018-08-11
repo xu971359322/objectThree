@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaAttendanceMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaAttendance" >
+    <id column="at_id" property="atId" jdbcType="INTEGER" />
+    <result column="at_begintime" property="atBegintime" jdbcType="TIMESTAMP" />
+    <result column="at_content" property="atContent" jdbcType="VARCHAR" />
+    <result column="at_endtime" property="atEndtime" jdbcType="TIMESTAMP" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    at_id, at_begintime, at_content, at_endtime, wo_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_attendance
+    where at_id = #{atId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_attendance
+    where at_id = #{atId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaAttendance" >
+    insert into oa_attendance (at_id, at_begintime, at_content, 
+      at_endtime, wo_id)
+    values (#{atId,jdbcType=INTEGER}, #{atBegintime,jdbcType=TIMESTAMP}, #{atContent,jdbcType=VARCHAR}, 
+      #{atEndtime,jdbcType=TIMESTAMP}, #{woId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaAttendance" >
+    insert into oa_attendance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="atId != null" >
+        at_id,
+      </if>
+      <if test="atBegintime != null" >
+        at_begintime,
+      </if>
+      <if test="atContent != null" >
+        at_content,
+      </if>
+      <if test="atEndtime != null" >
+        at_endtime,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="atId != null" >
+        #{atId,jdbcType=INTEGER},
+      </if>
+      <if test="atBegintime != null" >
+        #{atBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atContent != null" >
+        #{atContent,jdbcType=VARCHAR},
+      </if>
+      <if test="atEndtime != null" >
+        #{atEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaAttendance" >
+    update oa_attendance
+    <set >
+      <if test="atBegintime != null" >
+        at_begintime = #{atBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atContent != null" >
+        at_content = #{atContent,jdbcType=VARCHAR},
+      </if>
+      <if test="atEndtime != null" >
+        at_endtime = #{atEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where at_id = #{atId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaAttendance" >
+    update oa_attendance
+    set at_begintime = #{atBegintime,jdbcType=TIMESTAMP},
+      at_content = #{atContent,jdbcType=VARCHAR},
+      at_endtime = #{atEndtime,jdbcType=TIMESTAMP},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where at_id = #{atId,jdbcType=INTEGER}
+  </update>
+</mapper>

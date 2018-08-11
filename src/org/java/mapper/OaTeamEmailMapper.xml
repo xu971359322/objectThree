@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamEmailMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamEmail" >
+    <id column="em_id" property="emId" jdbcType="VARCHAR" />
+    <result column="em_theme" property="emTheme" jdbcType="VARCHAR" />
+    <result column="wo_fid" property="woFid" jdbcType="VARCHAR" />
+    <result column="wo_sid" property="woSid" jdbcType="VARCHAR" />
+    <result column="em_time" property="emTime" jdbcType="TIMESTAMP" />
+    <result column="em_level" property="emLevel" jdbcType="INTEGER" />
+    <result column="em_stauts" property="emStauts" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.java.entity.OaTeamEmail" extends="BaseResultMap" >
+    <result column="em_infomation" property="emInfomation" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    em_id, em_theme, wo_fid, wo_sid, em_time, em_level, em_stauts
+  </sql>
+  <sql id="Blob_Column_List" >
+    em_infomation
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from oa_team_email
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from oa_team_email
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamEmail" >
+    insert into oa_team_email (em_id, em_theme, wo_fid, 
+      wo_sid, em_time, em_level, 
+      em_stauts, em_infomation)
+    values (#{emId,jdbcType=VARCHAR}, #{emTheme,jdbcType=VARCHAR}, #{woFid,jdbcType=VARCHAR}, 
+      #{woSid,jdbcType=VARCHAR}, #{emTime,jdbcType=TIMESTAMP}, #{emLevel,jdbcType=INTEGER}, 
+      #{emStauts,jdbcType=INTEGER}, #{emInfomation,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamEmail" >
+    insert into oa_team_email
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="emId != null" >
+        em_id,
+      </if>
+      <if test="emTheme != null" >
+        em_theme,
+      </if>
+      <if test="woFid != null" >
+        wo_fid,
+      </if>
+      <if test="woSid != null" >
+        wo_sid,
+      </if>
+      <if test="emTime != null" >
+        em_time,
+      </if>
+      <if test="emLevel != null" >
+        em_level,
+      </if>
+      <if test="emStauts != null" >
+        em_stauts,
+      </if>
+      <if test="emInfomation != null" >
+        em_infomation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="emId != null" >
+        #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="emTheme != null" >
+        #{emTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="woFid != null" >
+        #{woFid,jdbcType=VARCHAR},
+      </if>
+      <if test="woSid != null" >
+        #{woSid,jdbcType=VARCHAR},
+      </if>
+      <if test="emTime != null" >
+        #{emTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emLevel != null" >
+        #{emLevel,jdbcType=INTEGER},
+      </if>
+      <if test="emStauts != null" >
+        #{emStauts,jdbcType=INTEGER},
+      </if>
+      <if test="emInfomation != null" >
+        #{emInfomation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamEmail" >
+    update oa_team_email
+    <set >
+      <if test="emTheme != null" >
+        em_theme = #{emTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="woFid != null" >
+        wo_fid = #{woFid,jdbcType=VARCHAR},
+      </if>
+      <if test="woSid != null" >
+        wo_sid = #{woSid,jdbcType=VARCHAR},
+      </if>
+      <if test="emTime != null" >
+        em_time = #{emTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emLevel != null" >
+        em_level = #{emLevel,jdbcType=INTEGER},
+      </if>
+      <if test="emStauts != null" >
+        em_stauts = #{emStauts,jdbcType=INTEGER},
+      </if>
+      <if test="emInfomation != null" >
+        em_infomation = #{emInfomation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.java.entity.OaTeamEmail" >
+    update oa_team_email
+    set em_theme = #{emTheme,jdbcType=VARCHAR},
+      wo_fid = #{woFid,jdbcType=VARCHAR},
+      wo_sid = #{woSid,jdbcType=VARCHAR},
+      em_time = #{emTime,jdbcType=TIMESTAMP},
+      em_level = #{emLevel,jdbcType=INTEGER},
+      em_stauts = #{emStauts,jdbcType=INTEGER},
+      em_infomation = #{emInfomation,jdbcType=LONGVARCHAR}
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamEmail" >
+    update oa_team_email
+    set em_theme = #{emTheme,jdbcType=VARCHAR},
+      wo_fid = #{woFid,jdbcType=VARCHAR},
+      wo_sid = #{woSid,jdbcType=VARCHAR},
+      em_time = #{emTime,jdbcType=TIMESTAMP},
+      em_level = #{emLevel,jdbcType=INTEGER},
+      em_stauts = #{emStauts,jdbcType=INTEGER}
+    where em_id = #{emId,jdbcType=VARCHAR}
+  </update>
+</mapper>

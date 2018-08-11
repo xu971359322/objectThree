@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaDocumentMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaDocument" >
+    <id column="do_id" property="doId" jdbcType="INTEGER" />
+    <result column="do_title" property="doTitle" jdbcType="VARCHAR" />
+    <result column="do_time" property="doTime" jdbcType="TIMESTAMP" />
+    <result column="do_lever" property="doLever" jdbcType="VARCHAR" />
+    <result column="do_type" property="doType" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    do_id, do_title, do_time, do_lever, do_type, wo_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_document
+    where do_id = #{doId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_document
+    where do_id = #{doId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaDocument" >
+    insert into oa_document (do_id, do_title, do_time, 
+      do_lever, do_type, wo_id
+      )
+    values (#{doId,jdbcType=INTEGER}, #{doTitle,jdbcType=VARCHAR}, #{doTime,jdbcType=TIMESTAMP}, 
+      #{doLever,jdbcType=VARCHAR}, #{doType,jdbcType=INTEGER}, #{woId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaDocument" >
+    insert into oa_document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="doId != null" >
+        do_id,
+      </if>
+      <if test="doTitle != null" >
+        do_title,
+      </if>
+      <if test="doTime != null" >
+        do_time,
+      </if>
+      <if test="doLever != null" >
+        do_lever,
+      </if>
+      <if test="doType != null" >
+        do_type,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="doId != null" >
+        #{doId,jdbcType=INTEGER},
+      </if>
+      <if test="doTitle != null" >
+        #{doTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="doTime != null" >
+        #{doTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doLever != null" >
+        #{doLever,jdbcType=VARCHAR},
+      </if>
+      <if test="doType != null" >
+        #{doType,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaDocument" >
+    update oa_document
+    <set >
+      <if test="doTitle != null" >
+        do_title = #{doTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="doTime != null" >
+        do_time = #{doTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doLever != null" >
+        do_lever = #{doLever,jdbcType=VARCHAR},
+      </if>
+      <if test="doType != null" >
+        do_type = #{doType,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where do_id = #{doId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaDocument" >
+    update oa_document
+    set do_title = #{doTitle,jdbcType=VARCHAR},
+      do_time = #{doTime,jdbcType=TIMESTAMP},
+      do_lever = #{doLever,jdbcType=VARCHAR},
+      do_type = #{doType,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where do_id = #{doId,jdbcType=INTEGER}
+  </update>
+</mapper>

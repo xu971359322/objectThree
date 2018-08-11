@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamWorkerMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamWorker" >
+    <id column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="wo_name" property="woName" jdbcType="VARCHAR" />
+    <result column="wo_loginName" property="woLoginname" jdbcType="VARCHAR" />
+    <result column="wo_loginPwd" property="woLoginpwd" jdbcType="VARCHAR" />
+    <result column="wo_role" property="woRole" jdbcType="INTEGER" />
+    <result column="wo_gender" property="woGender" jdbcType="CHAR" />
+    <result column="wo_email" property="woEmail" jdbcType="VARCHAR" />
+    <result column="wo_infomation" property="woInfomation" jdbcType="VARCHAR" />
+    <result column="wo_photo" property="woPhoto" jdbcType="VARCHAR" />
+    <result column="wo_stauts" property="woStauts" jdbcType="INTEGER" />
+    <result column="wo_stationId" property="woStationid" jdbcType="INTEGER" />
+    <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wo_id, wo_name, wo_loginName, wo_loginPwd, wo_role, wo_gender, wo_email, wo_infomation, 
+    wo_photo, wo_stauts, wo_stationId, wo_deptId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_team_worker
+    where wo_id = #{woId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from oa_team_worker
+    where wo_id = #{woId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamWorker" >
+    insert into oa_team_worker (wo_id, wo_name, wo_loginName, 
+      wo_loginPwd, wo_role, wo_gender, 
+      wo_email, wo_infomation, wo_photo, 
+      wo_stauts, wo_stationId, wo_deptId
+      )
+    values (#{woId,jdbcType=VARCHAR}, #{woName,jdbcType=VARCHAR}, #{woLoginname,jdbcType=VARCHAR}, 
+      #{woLoginpwd,jdbcType=VARCHAR}, #{woRole,jdbcType=INTEGER}, #{woGender,jdbcType=CHAR}, 
+      #{woEmail,jdbcType=VARCHAR}, #{woInfomation,jdbcType=VARCHAR}, #{woPhoto,jdbcType=VARCHAR}, 
+      #{woStauts,jdbcType=INTEGER}, #{woStationid,jdbcType=INTEGER}, #{woDeptid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamWorker" >
+    insert into oa_team_worker
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="woId != null" >
+        wo_id,
+      </if>
+      <if test="woName != null" >
+        wo_name,
+      </if>
+      <if test="woLoginname != null" >
+        wo_loginName,
+      </if>
+      <if test="woLoginpwd != null" >
+        wo_loginPwd,
+      </if>
+      <if test="woRole != null" >
+        wo_role,
+      </if>
+      <if test="woGender != null" >
+        wo_gender,
+      </if>
+      <if test="woEmail != null" >
+        wo_email,
+      </if>
+      <if test="woInfomation != null" >
+        wo_infomation,
+      </if>
+      <if test="woPhoto != null" >
+        wo_photo,
+      </if>
+      <if test="woStauts != null" >
+        wo_stauts,
+      </if>
+      <if test="woStationid != null" >
+        wo_stationId,
+      </if>
+      <if test="woDeptid != null" >
+        wo_deptId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="woName != null" >
+        #{woName,jdbcType=VARCHAR},
+      </if>
+      <if test="woLoginname != null" >
+        #{woLoginname,jdbcType=VARCHAR},
+      </if>
+      <if test="woLoginpwd != null" >
+        #{woLoginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="woRole != null" >
+        #{woRole,jdbcType=INTEGER},
+      </if>
+      <if test="woGender != null" >
+        #{woGender,jdbcType=CHAR},
+      </if>
+      <if test="woEmail != null" >
+        #{woEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="woInfomation != null" >
+        #{woInfomation,jdbcType=VARCHAR},
+      </if>
+      <if test="woPhoto != null" >
+        #{woPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="woStauts != null" >
+        #{woStauts,jdbcType=INTEGER},
+      </if>
+      <if test="woStationid != null" >
+        #{woStationid,jdbcType=INTEGER},
+      </if>
+      <if test="woDeptid != null" >
+        #{woDeptid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamWorker" >
+    update oa_team_worker
+    <set >
+      <if test="woName != null" >
+        wo_name = #{woName,jdbcType=VARCHAR},
+      </if>
+      <if test="woLoginname != null" >
+        wo_loginName = #{woLoginname,jdbcType=VARCHAR},
+      </if>
+      <if test="woLoginpwd != null" >
+        wo_loginPwd = #{woLoginpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="woRole != null" >
+        wo_role = #{woRole,jdbcType=INTEGER},
+      </if>
+      <if test="woGender != null" >
+        wo_gender = #{woGender,jdbcType=CHAR},
+      </if>
+      <if test="woEmail != null" >
+        wo_email = #{woEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="woInfomation != null" >
+        wo_infomation = #{woInfomation,jdbcType=VARCHAR},
+      </if>
+      <if test="woPhoto != null" >
+        wo_photo = #{woPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="woStauts != null" >
+        wo_stauts = #{woStauts,jdbcType=INTEGER},
+      </if>
+      <if test="woStationid != null" >
+        wo_stationId = #{woStationid,jdbcType=INTEGER},
+      </if>
+      <if test="woDeptid != null" >
+        wo_deptId = #{woDeptid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where wo_id = #{woId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamWorker" >
+    update oa_team_worker
+    set wo_name = #{woName,jdbcType=VARCHAR},
+      wo_loginName = #{woLoginname,jdbcType=VARCHAR},
+      wo_loginPwd = #{woLoginpwd,jdbcType=VARCHAR},
+      wo_role = #{woRole,jdbcType=INTEGER},
+      wo_gender = #{woGender,jdbcType=CHAR},
+      wo_email = #{woEmail,jdbcType=VARCHAR},
+      wo_infomation = #{woInfomation,jdbcType=VARCHAR},
+      wo_photo = #{woPhoto,jdbcType=VARCHAR},
+      wo_stauts = #{woStauts,jdbcType=INTEGER},
+      wo_stationId = #{woStationid,jdbcType=INTEGER},
+      wo_deptId = #{woDeptid,jdbcType=INTEGER}
+    where wo_id = #{woId,jdbcType=VARCHAR}
+  </update>
+</mapper>

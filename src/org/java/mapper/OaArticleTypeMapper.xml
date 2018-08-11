@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaArticleTypeMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaArticleType" >
+    <id column="bbs_type_id" property="bbsTypeId" jdbcType="INTEGER" />
+    <result column="bbs_type_name" property="bbsTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bbs_type_id, bbs_type_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_article_type
+    where bbs_type_id = #{bbsTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_article_type
+    where bbs_type_id = #{bbsTypeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaArticleType" >
+    insert into oa_article_type (bbs_type_id, bbs_type_name)
+    values (#{bbsTypeId,jdbcType=INTEGER}, #{bbsTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaArticleType" >
+    insert into oa_article_type
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bbsTypeId != null" >
+        bbs_type_id,
+      </if>
+      <if test="bbsTypeName != null" >
+        bbs_type_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bbsTypeId != null" >
+        #{bbsTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="bbsTypeName != null" >
+        #{bbsTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaArticleType" >
+    update oa_article_type
+    <set >
+      <if test="bbsTypeName != null" >
+        bbs_type_name = #{bbsTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bbs_type_id = #{bbsTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaArticleType" >
+    update oa_article_type
+    set bbs_type_name = #{bbsTypeName,jdbcType=VARCHAR}
+    where bbs_type_id = #{bbsTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

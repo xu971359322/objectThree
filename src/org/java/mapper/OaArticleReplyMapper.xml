@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaArticleReplyMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaArticleReply" >
+    <id column="bbs_reply_id" property="bbsReplyId" jdbcType="INTEGER" />
+    <result column="bbs_topic_id" property="bbsTopicId" jdbcType="INTEGER" />
+    <result column="bbs_reply_content" property="bbsReplyContent" jdbcType="VARCHAR" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="bbs_reply_time" property="bbsReplyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bbs_reply_id, bbs_topic_id, bbs_reply_content, wo_id, bbs_reply_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_article_reply
+    where bbs_reply_id = #{bbsReplyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_article_reply
+    where bbs_reply_id = #{bbsReplyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaArticleReply" >
+    insert into oa_article_reply (bbs_reply_id, bbs_topic_id, bbs_reply_content, 
+      wo_id, bbs_reply_time)
+    values (#{bbsReplyId,jdbcType=INTEGER}, #{bbsTopicId,jdbcType=INTEGER}, #{bbsReplyContent,jdbcType=VARCHAR}, 
+      #{woId,jdbcType=VARCHAR}, #{bbsReplyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaArticleReply" >
+    insert into oa_article_reply
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bbsReplyId != null" >
+        bbs_reply_id,
+      </if>
+      <if test="bbsTopicId != null" >
+        bbs_topic_id,
+      </if>
+      <if test="bbsReplyContent != null" >
+        bbs_reply_content,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+      <if test="bbsReplyTime != null" >
+        bbs_reply_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bbsReplyId != null" >
+        #{bbsReplyId,jdbcType=INTEGER},
+      </if>
+      <if test="bbsTopicId != null" >
+        #{bbsTopicId,jdbcType=INTEGER},
+      </if>
+      <if test="bbsReplyContent != null" >
+        #{bbsReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="bbsReplyTime != null" >
+        #{bbsReplyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaArticleReply" >
+    update oa_article_reply
+    <set >
+      <if test="bbsTopicId != null" >
+        bbs_topic_id = #{bbsTopicId,jdbcType=INTEGER},
+      </if>
+      <if test="bbsReplyContent != null" >
+        bbs_reply_content = #{bbsReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="bbsReplyTime != null" >
+        bbs_reply_time = #{bbsReplyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bbs_reply_id = #{bbsReplyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaArticleReply" >
+    update oa_article_reply
+    set bbs_topic_id = #{bbsTopicId,jdbcType=INTEGER},
+      bbs_reply_content = #{bbsReplyContent,jdbcType=VARCHAR},
+      wo_id = #{woId,jdbcType=VARCHAR},
+      bbs_reply_time = #{bbsReplyTime,jdbcType=TIMESTAMP}
+    where bbs_reply_id = #{bbsReplyId,jdbcType=INTEGER}
+  </update>
+</mapper>

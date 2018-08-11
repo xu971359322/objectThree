@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaMettingplaceMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaMettingplace" >
+    <id column="mp_id" property="mpId" jdbcType="INTEGER" />
+    <result column="mp_title" property="mpTitle" jdbcType="VARCHAR" />
+    <result column="mp_content" property="mpContent" jdbcType="VARCHAR" />
+    <result column="mp_people" property="mpPeople" jdbcType="INTEGER" />
+    <result column="mp_place" property="mpPlace" jdbcType="VARCHAR" />
+    <result column="mp_facility" property="mpFacility" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mp_id, mp_title, mp_content, mp_people, mp_place, mp_facility
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_mettingplace
+    where mp_id = #{mpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_mettingplace
+    where mp_id = #{mpId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaMettingplace" >
+    insert into oa_mettingplace (mp_id, mp_title, mp_content, 
+      mp_people, mp_place, mp_facility
+      )
+    values (#{mpId,jdbcType=INTEGER}, #{mpTitle,jdbcType=VARCHAR}, #{mpContent,jdbcType=VARCHAR}, 
+      #{mpPeople,jdbcType=INTEGER}, #{mpPlace,jdbcType=VARCHAR}, #{mpFacility,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaMettingplace" >
+    insert into oa_mettingplace
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mpId != null" >
+        mp_id,
+      </if>
+      <if test="mpTitle != null" >
+        mp_title,
+      </if>
+      <if test="mpContent != null" >
+        mp_content,
+      </if>
+      <if test="mpPeople != null" >
+        mp_people,
+      </if>
+      <if test="mpPlace != null" >
+        mp_place,
+      </if>
+      <if test="mpFacility != null" >
+        mp_facility,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mpId != null" >
+        #{mpId,jdbcType=INTEGER},
+      </if>
+      <if test="mpTitle != null" >
+        #{mpTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="mpContent != null" >
+        #{mpContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mpPeople != null" >
+        #{mpPeople,jdbcType=INTEGER},
+      </if>
+      <if test="mpPlace != null" >
+        #{mpPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="mpFacility != null" >
+        #{mpFacility,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaMettingplace" >
+    update oa_mettingplace
+    <set >
+      <if test="mpTitle != null" >
+        mp_title = #{mpTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="mpContent != null" >
+        mp_content = #{mpContent,jdbcType=VARCHAR},
+      </if>
+      <if test="mpPeople != null" >
+        mp_people = #{mpPeople,jdbcType=INTEGER},
+      </if>
+      <if test="mpPlace != null" >
+        mp_place = #{mpPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="mpFacility != null" >
+        mp_facility = #{mpFacility,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mp_id = #{mpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaMettingplace" >
+    update oa_mettingplace
+    set mp_title = #{mpTitle,jdbcType=VARCHAR},
+      mp_content = #{mpContent,jdbcType=VARCHAR},
+      mp_people = #{mpPeople,jdbcType=INTEGER},
+      mp_place = #{mpPlace,jdbcType=VARCHAR},
+      mp_facility = #{mpFacility,jdbcType=VARCHAR}
+    where mp_id = #{mpId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaMettinguserMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaMettinguser" >
+    <id column="mu_id" property="muId" jdbcType="INTEGER" />
+    <result column="m_id" property="mId" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mu_id, m_id, wo_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_mettinguser
+    where mu_id = #{muId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_mettinguser
+    where mu_id = #{muId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaMettinguser" >
+    insert into oa_mettinguser (mu_id, m_id, wo_id
+      )
+    values (#{muId,jdbcType=INTEGER}, #{mId,jdbcType=INTEGER}, #{woId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaMettinguser" >
+    insert into oa_mettinguser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="muId != null" >
+        mu_id,
+      </if>
+      <if test="mId != null" >
+        m_id,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="muId != null" >
+        #{muId,jdbcType=INTEGER},
+      </if>
+      <if test="mId != null" >
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaMettinguser" >
+    update oa_mettinguser
+    <set >
+      <if test="mId != null" >
+        m_id = #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mu_id = #{muId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaMettinguser" >
+    update oa_mettinguser
+    set m_id = #{mId,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where mu_id = #{muId,jdbcType=INTEGER}
+  </update>
+</mapper>

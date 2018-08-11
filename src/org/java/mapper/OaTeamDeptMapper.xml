@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamDeptMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamDept" >
+    <id column="de_id" property="deId" jdbcType="INTEGER" />
+    <result column="de_name" property="deName" jdbcType="VARCHAR" />
+    <result column="de_phone" property="dePhone" jdbcType="VARCHAR" />
+    <result column="de_fax" property="deFax" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    de_id, de_name, de_phone, de_fax
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_team_dept
+    where de_id = #{deId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_team_dept
+    where de_id = #{deId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamDept" >
+    insert into oa_team_dept (de_id, de_name, de_phone, 
+      de_fax)
+    values (#{deId,jdbcType=INTEGER}, #{deName,jdbcType=VARCHAR}, #{dePhone,jdbcType=VARCHAR}, 
+      #{deFax,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamDept" >
+    insert into oa_team_dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        de_id,
+      </if>
+      <if test="deName != null" >
+        de_name,
+      </if>
+      <if test="dePhone != null" >
+        de_phone,
+      </if>
+      <if test="deFax != null" >
+        de_fax,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deId != null" >
+        #{deId,jdbcType=INTEGER},
+      </if>
+      <if test="deName != null" >
+        #{deName,jdbcType=VARCHAR},
+      </if>
+      <if test="dePhone != null" >
+        #{dePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="deFax != null" >
+        #{deFax,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamDept" >
+    update oa_team_dept
+    <set >
+      <if test="deName != null" >
+        de_name = #{deName,jdbcType=VARCHAR},
+      </if>
+      <if test="dePhone != null" >
+        de_phone = #{dePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="deFax != null" >
+        de_fax = #{deFax,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where de_id = #{deId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamDept" >
+    update oa_team_dept
+    set de_name = #{deName,jdbcType=VARCHAR},
+      de_phone = #{dePhone,jdbcType=VARCHAR},
+      de_fax = #{deFax,jdbcType=VARCHAR}
+    where de_id = #{deId,jdbcType=INTEGER}
+  </update>
+</mapper>

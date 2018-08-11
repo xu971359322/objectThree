@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaMemoMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaMemo" >
+    <id column="me_id" property="meId" jdbcType="INTEGER" />
+    <result column="me_title" property="meTitle" jdbcType="VARCHAR" />
+    <result column="me_content" property="meContent" jdbcType="VARCHAR" />
+    <result column="me_time" property="meTime" jdbcType="TIMESTAMP" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    me_id, me_title, me_content, me_time, wo_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_memo
+    where me_id = #{meId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_memo
+    where me_id = #{meId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaMemo" >
+    insert into oa_memo (me_id, me_title, me_content, 
+      me_time, wo_id)
+    values (#{meId,jdbcType=INTEGER}, #{meTitle,jdbcType=VARCHAR}, #{meContent,jdbcType=VARCHAR}, 
+      #{meTime,jdbcType=TIMESTAMP}, #{woId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaMemo" >
+    insert into oa_memo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="meId != null" >
+        me_id,
+      </if>
+      <if test="meTitle != null" >
+        me_title,
+      </if>
+      <if test="meContent != null" >
+        me_content,
+      </if>
+      <if test="meTime != null" >
+        me_time,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="meId != null" >
+        #{meId,jdbcType=INTEGER},
+      </if>
+      <if test="meTitle != null" >
+        #{meTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="meContent != null" >
+        #{meContent,jdbcType=VARCHAR},
+      </if>
+      <if test="meTime != null" >
+        #{meTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaMemo" >
+    update oa_memo
+    <set >
+      <if test="meTitle != null" >
+        me_title = #{meTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="meContent != null" >
+        me_content = #{meContent,jdbcType=VARCHAR},
+      </if>
+      <if test="meTime != null" >
+        me_time = #{meTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where me_id = #{meId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaMemo" >
+    update oa_memo
+    set me_title = #{meTitle,jdbcType=VARCHAR},
+      me_content = #{meContent,jdbcType=VARCHAR},
+      me_time = #{meTime,jdbcType=TIMESTAMP},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where me_id = #{meId,jdbcType=INTEGER}
+  </update>
+</mapper>

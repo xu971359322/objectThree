@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaFileMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaFile" >
+    <id column="f_id" property="fId" jdbcType="INTEGER" />
+    <result column="f_name" property="fName" jdbcType="VARCHAR" />
+    <result column="f_time" property="fTime" jdbcType="TIMESTAMP" />
+    <result column="f_type" property="fType" jdbcType="VARCHAR" />
+    <result column="f_stauts" property="fStauts" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="sel_uid" property="selUid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    f_id, f_name, f_time, f_type, f_stauts, wo_id, sel_uid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_file
+    where f_id = #{fId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_file
+    where f_id = #{fId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaFile" >
+    insert into oa_file (f_id, f_name, f_time, 
+      f_type, f_stauts, wo_id, 
+      sel_uid)
+    values (#{fId,jdbcType=INTEGER}, #{fName,jdbcType=VARCHAR}, #{fTime,jdbcType=TIMESTAMP}, 
+      #{fType,jdbcType=VARCHAR}, #{fStauts,jdbcType=INTEGER}, #{woId,jdbcType=VARCHAR}, 
+      #{selUid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaFile" >
+    insert into oa_file
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        f_id,
+      </if>
+      <if test="fName != null" >
+        f_name,
+      </if>
+      <if test="fTime != null" >
+        f_time,
+      </if>
+      <if test="fType != null" >
+        f_type,
+      </if>
+      <if test="fStauts != null" >
+        f_stauts,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+      <if test="selUid != null" >
+        sel_uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="fName != null" >
+        #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fType != null" >
+        #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fStauts != null" >
+        #{fStauts,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="selUid != null" >
+        #{selUid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaFile" >
+    update oa_file
+    <set >
+      <if test="fName != null" >
+        f_name = #{fName,jdbcType=VARCHAR},
+      </if>
+      <if test="fTime != null" >
+        f_time = #{fTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fType != null" >
+        f_type = #{fType,jdbcType=VARCHAR},
+      </if>
+      <if test="fStauts != null" >
+        f_stauts = #{fStauts,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="selUid != null" >
+        sel_uid = #{selUid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaFile" >
+    update oa_file
+    set f_name = #{fName,jdbcType=VARCHAR},
+      f_time = #{fTime,jdbcType=TIMESTAMP},
+      f_type = #{fType,jdbcType=VARCHAR},
+      f_stauts = #{fStauts,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR},
+      sel_uid = #{selUid,jdbcType=VARCHAR}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+</mapper>
