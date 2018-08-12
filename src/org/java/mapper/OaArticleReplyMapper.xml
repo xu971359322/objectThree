@@ -11,7 +11,7 @@
   <sql id="Base_Column_List" >
     bbs_reply_id, bbs_topic_id, bbs_reply_content, wo_id, bbs_reply_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select 
     <include refid="Base_Column_List" />
     from oa_article_reply
@@ -21,7 +21,7 @@
     delete from oa_article_reply
     where bbs_reply_id = #{bbsReplyId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.java.entity.OaArticleReply" >
+  <insert id="insert" parameterType="org.java.entity.OaArticleReply">
     insert into oa_article_reply (bbs_reply_id, bbs_topic_id, bbs_reply_content, 
       wo_id, bbs_reply_time)
     values (#{bbsReplyId,jdbcType=INTEGER}, #{bbsTopicId,jdbcType=INTEGER}, #{bbsReplyContent,jdbcType=VARCHAR}, 

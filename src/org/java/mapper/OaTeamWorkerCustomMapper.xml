@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamWorkerCustomMapper">
+    <select id="loginInfo" resultType="java.util.HashMap">
+          SELECT a.*,b.ro_name,b.ro_id roleId FROM oa_team_worker a,oa_team_role b,oa_worker_role c
+            WHERE
+            c.wo_id=a.wo_id
+            AND
+            c.ro_id=b.ro_id
+            AND
+            a.wo_loginName=#{username}
+    </select>
+</mapper>
