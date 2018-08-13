@@ -93,9 +93,13 @@
 										<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>个人办公</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 										<div id="subPages" class="collapse ">
 											<ul class="nav" id="menuSideBar">
+
 												<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
+
 												<li mid="tab2" funurl="${pageContext.request.contextPath}/admin.jsp"><a tabindex="-1" href="javascript:void(0);">申请报告</a></li>
+
 												<li mid="tab3" funurl="${pageContext.request.contextPath}/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">办理任务</a></li>
+
 												<li mid="tab4" funurl="${pageContext.request.contextPath}/demo.do"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
 											</ul>
 										</div>
