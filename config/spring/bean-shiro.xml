@@ -11,12 +11,15 @@
 			<value>
 				<!-- /user/add.do=perms[user:add]
 				/user/del.do=perms=[user:del]
-				/user/update.do=perms[user:update] -->
-				/exit.do=logout
+				/user/update.do=perms[user:update]
+				 /exit.do=logout
+				 -->
+				/favicon.ico=anon
 				/css/**=anon
 				/js/**=anon
 				/images/**=anon
 				/assets/**=anon
+				/pjsp/**=anon
 				/**=authc
 			</value>
 		</property>
