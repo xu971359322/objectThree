@@ -20,4 +20,12 @@ public class OaTeamRole {
     public void setRoName(String roName) {
         this.roName = roName == null ? null : roName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "OaTeamRole{" +
+                "roId=" + roId +
+                ", roName='" + roName + '\'' +
+                '}';
+    }
 }

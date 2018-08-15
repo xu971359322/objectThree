@@ -5,11 +5,9 @@ import java.util.Date;
 public class OaTeamEmail {
     private String emId;
 
-    private String emTheme;
+    private String emTitle;
 
     private String woFid;
-
-    private String woSid;
 
     private Date emTime;
 
@@ -27,12 +25,12 @@ public class OaTeamEmail {
         this.emId = emId == null ? null : emId.trim();
     }
 
-    public String getEmTheme() {
-        return emTheme;
+    public String getEmTitle() {
+        return emTitle;
     }
 
-    public void setEmTheme(String emTheme) {
-        this.emTheme = emTheme == null ? null : emTheme.trim();
+    public void setEmTitle(String emTitle) {
+        this.emTitle = emTitle == null ? null : emTitle.trim();
     }
 
     public String getWoFid() {
@@ -41,14 +39,6 @@ public class OaTeamEmail {
 
     public void setWoFid(String woFid) {
         this.woFid = woFid == null ? null : woFid.trim();
-    }
-
-    public String getWoSid() {
-        return woSid;
-    }
-
-    public void setWoSid(String woSid) {
-        this.woSid = woSid == null ? null : woSid.trim();
     }
 
     public Date getEmTime() {
