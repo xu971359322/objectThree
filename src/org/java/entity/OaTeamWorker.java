@@ -25,6 +25,8 @@ public class OaTeamWorker {
 
     private Integer woDeptid;
 
+    private String woPhone;
+
     public String getWoId() {
         return woId;
     }
@@ -119,5 +121,13 @@ public class OaTeamWorker {
 
     public void setWoDeptid(Integer woDeptid) {
         this.woDeptid = woDeptid;
+    }
+
+    public String getWoPhone() {
+        return woPhone;
+    }
+
+    public void setWoPhone(String woPhone) {
+        this.woPhone = woPhone == null ? null : woPhone.trim();
     }
 }

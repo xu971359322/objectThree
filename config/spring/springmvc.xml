@@ -26,8 +26,6 @@
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/assets/**" location="/assets/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
-    <mvc:resources mapping="/pjsp/**" location="/pjsp/"/>
-
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

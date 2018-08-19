@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.java.mapper.OaTeamWorkerCustomMapper">
-    <resultMap id="BaseResultMap" type="org.java.entity.OaTeamWorker" >
-        <id column="wo_id" property="woId" jdbcType="VARCHAR" />
+<mapper namespace="org.java.mapper.ResouMapper" >
+    <resultMap id="workMap" type="org.java.entity.OaTeamWorker">
+        <id column="wo_id" property="woId" jdbcType="VARCHAR"  />
         <result column="wo_name" property="woName" jdbcType="VARCHAR" />
         <result column="wo_loginName" property="woLoginname" jdbcType="VARCHAR" />
         <result column="wo_loginPwd" property="woLoginpwd" jdbcType="VARCHAR" />
@@ -17,12 +17,11 @@
         <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
     </resultMap>
 
-    <select id="loginInfo" resultMap="BaseResultMap">
-        select * from oa_team_worker where wo_loginName= #{username} and wo_loginPwd=#{password}
-    </select>
+  <select id="oaWorkerAll" resultMap="BaseResultMap">
+      select * from oa_team_worker
+  </select>
 
-    <select id="one" resultType="java.util.HashMap">
-        SELECT * FROM oa_team_role
-    </select>
-
+    <insert id="resouAdd" parameterType="m">
+        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess})
+    </insert>
 </mapper>

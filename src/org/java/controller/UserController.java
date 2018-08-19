@@ -1,13 +1,15 @@
 package org.java.controller;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
+import org.apache.ibatis.annotations.Param;
+import org.java.entity.OaTeamRole;
+import org.java.entity.OaTeamWorker;
 import org.java.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -20,45 +22,26 @@ public class UserController extends BaseController {
     @Qualifier("sysUserService")
     private SysUserService sysUserService;
 
-    @RequestMapping("/load")
-    public String first(){
-
-        //得到主体
-        Subject subject = SecurityUtils.getSubject();
-
-        //从主体中，得到认证成功时，存放的"用户凭证"
-        Map<String,Object> user =(Map<String, Object>) subject.getPrincipal();
-
-        //存放用户信息
-        session.setAttribute("worker",user);
-
-     /*   //存放菜单
-        List<Map<String,Object>> menus = (List<Map<String, Object>>) user.get("menus");
-        System.out.println(menus.size()+">>>>>>>>>>>");
-        model.addAttribute("menus",menus);*/
-        System.out.println("1111111111111111111111122222222222222222222222222222222222333333333333333333333333333333333");
-        return "/main";
-    }
-
-
     @RequestMapping("/loginInfo")
-    public String loginInfo() throws Exception {
-        System.out.println("======================================loginController===============================================");
-
-        //取消息内容，用于判断是因为没有登录进入的，还是登录失败进入的
-        String msg = (String) request.getAttribute("shiroLoginFailure");
-
-        if (msg != null) {
-            if (msg.equals("org.apache.shiro.authc.UnknownAccountException")) {
-                throw new Exception("用户名不存在");
-            } else if (msg.equals("org.apache.shiro.authc.IncorrectCredentialsException")) {
-                throw new Exception("密码错误");
-            } else {
-                System.out.println(msg);
-                throw new Exception("产生了其他的异常");
-            }
+    public String loginInfo(@RequestParam("username") String username, @RequestParam("password") String password) {
+        System.out.println(username+"========="+password);
+        OaTeamWorker worker = sysUserService.loginInfo(username, password);
+        if (worker != null) {
+            session.setAttribute("worker", worker);
+            System.out.println("22222222222222222222222222222222222222222");
+            return "/main";
+        } else {
+            request.setAttribute("err", "密码错误！");
+            return "/index";
         }
-        return "/index";
+    }
+    @RequestMapping("/demo")
+    public String demo() {
+        List<Map<String,Object>> one = sysUserService.one();
+        for (Map<String,Object> map : one) {
+            System.out.println(map+"===========================================================");
+        }
+        return "/main";
     }
 
     @RequestMapping("/exit")

@@ -22,15 +22,18 @@
 		<img src="${pageContext.request.contextPath}/images/avtar.png" />
 	</div>
 	<form action="${pageContext.request.contextPath}/user/loginInfo.do" method="post">
-		<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+		<input type="text" class="text" name="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
 		<!-- <div class="key"> -->
-			<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+			<input type="password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 		<!-- </div> -->
 		<p style="position:relative;top:-30px;color: red;">${requestScope.err }</p>
 		<div class="signin">
 			<input type="submit" value="Login" >
 		</div>
 	</form>
+
+
+	<a href="${pageContext.request.contextPath}/user/demo.do">111111111111111111111111111111111111111111111111</a>
 </div>
 </body>
 </html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamSemailMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamSemail" >
+    <id column="se_id" property="seId" jdbcType="INTEGER" />
+    <result column="em_id" property="emId" jdbcType="VARCHAR" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="se_time" property="seTime" jdbcType="TIMESTAMP" />
+    <result column="se_status" property="seStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    se_id, em_id, wo_id, se_time, se_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_team_semail
+    where se_id = #{seId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_team_semail
+    where se_id = #{seId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamSemail" >
+    insert into oa_team_semail (se_id, em_id, wo_id, 
+      se_time, se_status)
+    values (#{seId,jdbcType=INTEGER}, #{emId,jdbcType=VARCHAR}, #{woId,jdbcType=VARCHAR}, 
+      #{seTime,jdbcType=TIMESTAMP}, #{seStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamSemail" >
+    insert into oa_team_semail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seId != null" >
+        se_id,
+      </if>
+      <if test="emId != null" >
+        em_id,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+      <if test="seTime != null" >
+        se_time,
+      </if>
+      <if test="seStatus != null" >
+        se_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seId != null" >
+        #{seId,jdbcType=INTEGER},
+      </if>
+      <if test="emId != null" >
+        #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="seTime != null" >
+        #{seTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seStatus != null" >
+        #{seStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamSemail" >
+    update oa_team_semail
+    <set >
+      <if test="emId != null" >
+        em_id = #{emId,jdbcType=VARCHAR},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="seTime != null" >
+        se_time = #{seTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seStatus != null" >
+        se_status = #{seStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where se_id = #{seId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamSemail" >
+    update oa_team_semail
+    set em_id = #{emId,jdbcType=VARCHAR},
+      wo_id = #{woId,jdbcType=VARCHAR},
+      se_time = #{seTime,jdbcType=TIMESTAMP},
+      se_status = #{seStatus,jdbcType=INTEGER}
+    where se_id = #{seId,jdbcType=INTEGER}
+  </update>
+</mapper>

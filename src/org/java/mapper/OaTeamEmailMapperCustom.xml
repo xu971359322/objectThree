@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamEmailMapperCustom" >
+
+  <select id="groupEmail" resultType="java.util.HashMap" parameterType="string">
+     SELECT em_stauts,COUNT(em_stauts) FROM oa_team_email
+      WHERE wo_fid =#{wid}
+      GROUP BY em_stauts
+  </select>
+</mapper>
