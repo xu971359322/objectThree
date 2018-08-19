@@ -2,6 +2,8 @@ package org.java.mapper;
 
 import org.java.entity.OaTeamWorker;
 
+import java.util.List;
+
 public interface OaTeamWorkerMapper {
     int deleteByPrimaryKey(String woId);
 
@@ -14,4 +16,6 @@ public interface OaTeamWorkerMapper {
     int updateByPrimaryKeySelective(OaTeamWorker record);
 
     int updateByPrimaryKey(OaTeamWorker record);
+
+    List<OaTeamWorker> oaWorkerAll();
 }

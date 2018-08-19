@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 //资源管理
-public interface ResouMapper {
-    public List<OaTeamWorker> oaWorkerAll();
+public interface OaResouMapper {
 
-    public void resouAdd(Map<String,Object> m);
+    public void oaResouAdd(Map<String,Object> m);
+
+    public List<Map<String, Object>> oaReouAll();
 }

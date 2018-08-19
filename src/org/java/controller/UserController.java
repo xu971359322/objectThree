@@ -43,12 +43,4 @@ public class UserController extends BaseController {
         }
         return "/main";
     }
-
-    @RequestMapping("/exit")
-    public String exit() throws Exception {
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        session.removeAttribute("worker");
-        return "/index";
-    }
 }

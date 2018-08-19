@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.java.mapper.ResouMapper" >
-    <resultMap id="workMap" type="org.java.entity.OaTeamWorker">
-        <id column="wo_id" property="woId" jdbcType="VARCHAR"  />
-        <result column="wo_name" property="woName" jdbcType="VARCHAR" />
-        <result column="wo_loginName" property="woLoginname" jdbcType="VARCHAR" />
-        <result column="wo_loginPwd" property="woLoginpwd" jdbcType="VARCHAR" />
-        <result column="wo_role" property="woRole" jdbcType="INTEGER" />
-        <result column="wo_gender" property="woGender" jdbcType="CHAR" />
-        <result column="wo_email" property="woEmail" jdbcType="VARCHAR" />
-        <result column="wo_infomation" property="woInfomation" jdbcType="VARCHAR" />
-        <result column="wo_photo" property="woPhoto" jdbcType="VARCHAR" />
-        <result column="wo_stauts" property="woStauts" jdbcType="INTEGER" />
-        <result column="wo_stationId" property="woStationid" jdbcType="INTEGER" />
-        <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
-        <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
+<mapper namespace="org.java.mapper.OaResouMapper" >
+    <resultMap id="BaseResultMap" type="org.java.entity.OaFile">
+        <id column="f_id" property="fId" jdbcType="INTEGER"/>
+        <result column="f_name" property="fName" jdbcType="VARCHAR"/>
+        <result column="f_time" property="fTime" jdbcType="VARCHAR"/>
+        <result column="f_type" property="fType" jdbcType="VARCHAR"/>
+        <result column="f_stauts" property="fStauts" jdbcType="INTEGER"/>
+        <result column="wo_id" property="woId" jdbcType="VARCHAR"/>
+        <result column="sel_uid" property="selUid" jdbcType="VARCHAR"/>
+        <result column="f_mess" property="fMess" jdbcType="VARCHAR"/>
     </resultMap>
 
-  <select id="oaWorkerAll" resultMap="BaseResultMap">
-      select * from oa_team_worker
-  </select>
+    <select id="oaResouAll" parameterType="org.java.entity.OaFile">
+      SELECT * from oa_file
+    </select>
 
-    <insert id="resouAdd" parameterType="m">
+    
+    <insert id="oaResouAdd" parameterType="m">
         INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess})
     </insert>
+
 </mapper>

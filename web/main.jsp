@@ -70,7 +70,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.worker.wo_name}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.worker.woName}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -106,7 +106,7 @@
 									</li>
 									<li><a href="email.jsp" class=""><i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
 									<li><a href="office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
-									<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
 									<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
 									<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
 									<li><a href="admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>

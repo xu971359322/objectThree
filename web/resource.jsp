@@ -70,7 +70,7 @@
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.worker.wo_name}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.worker.woName}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 							<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -99,19 +99,7 @@
 								<div id="subPages" class="collapse ">
 									<ul class="nav" id="menuSideBar">
 
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">公司所有文档</a></li>
-
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">我上传的文档</a></li>
-
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">私密文档</a></li>
-
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resou/Load.do"><a tabindex="-1" href="javascript:void(0);">文档上传</a></li>
-
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">文档下载</a></li>
-
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">文档回收站</a></li>
-
-										<li><a href="${pageContext.request.contextPath}/resou/Load.do">点击</a></li>
+										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource/word.jsp"><a tabindex="-1" href="javascript:void(0);">文档</a></li>
 									</ul>
 								</div>
 							</li>
