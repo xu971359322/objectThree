@@ -69,6 +69,7 @@ public class ResouController extends BaseController {
     @RequestMapping("/resouAll")
     public String resouAll(){
         List<Map<String,Object>> list = resouService.oaReouAll();
+        System.out.println(list.size());
         return "/resouAll";
     }
 

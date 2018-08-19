@@ -15,7 +15,6 @@
     <select id="oaResouAll" parameterType="org.java.entity.OaFile">
       SELECT * from oa_file
     </select>
-
     
     <insert id="oaResouAdd" parameterType="m">
         INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess})
