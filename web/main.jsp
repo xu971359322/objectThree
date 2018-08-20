@@ -82,9 +82,9 @@
 				</div>
 			</div>
 		</nav>
-
+		
 		<div class="content">
-					<div class="container">
+					<div class="container">		
 			 		<div id="sidebar-nav" class="sidebar" ><!-- style="display:none;" -->
 						<div class="sidebar-scroll">
 							<nav>
@@ -105,23 +105,22 @@
 									<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
 									<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
 									<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
-									<li><a href="admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/processDefinition.jsp" class=""><i class="lnr lnr-text-format"></i> <span>流程部署</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
 								</ul>
 							</nav>
 						</div>
 					</div>
-				 <div style="background-color:; border:2px solid blue;width:1640px;height:860px;position:relative;top:86px;left:-120px;">
+				<div style="width:1640px;height:860px;position:relative;top:86px;left:-130px;">
 					<div id="mainFrameTabs" style="width:1640px;height:860px;border:0px solid red;">
-					         <ul class="nav nav-tabs" role="tablist">
-					            <li role="presentation" class="active noclose"><a href="#bTabs_navTabsMainPage" data-toggle="tab">首页</a></li>
+					         <ul class="nav nav-tabs" role="tablist"> 
+					            <li role="presentation" class="active noclose"><a href="#bTabs_navTabsMainPage" data-toggle="tab">首页</a></li> 
 					          </ul>
-
 					          <div class="tab-content">
 					         	   <div class="tab-pane active" id="bTabs_navTabsMainPage">
-						              <div class="page-header">
-						                <h2 style="font-size: 31.5px;text-align: center;font-weight: normal;">欢迎使用</h2>
-						              </div>
-						              <div style="text-align: center;font-size: 20px;line-height: 20px;"> 欢迎使用 bTabs 插件！ </div>
+						              <div style="text-align: center;font-size: 20px;line-height: 20px;">
+										  <iframe src="${pageContext.request.contextPath}/pjsp/programme.jsp" width="1630px"height="800px" frameborder="0"></iframe>
+									  </div>
 					               </div>
 					  		 </div>
 					</div>
