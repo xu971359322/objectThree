@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamReportMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamReport" >
+    <id column="re_id" property="reId" jdbcType="VARCHAR" />
+    <result column="re_name" property="reName" jdbcType="VARCHAR" />
+    <result column="re_time" property="reTime" jdbcType="TIMESTAMP" />
+    <result column="re_file" property="reFile" jdbcType="VARCHAR" />
+    <result column="re_status" property="reStatus" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="org.java.entity.OaTeamReport" extends="BaseResultMap" >
+    <result column="re_content" property="reContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    re_id, re_name, re_time, re_file, re_status, wo_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    re_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from oa_team_report
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from oa_team_report
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamReport" >
+    insert into oa_team_report (re_id, re_name, re_time, 
+      re_file, re_status, wo_id, 
+      re_content)
+    values (#{reId,jdbcType=VARCHAR}, #{reName,jdbcType=VARCHAR}, #{reTime,jdbcType=TIMESTAMP}, 
+      #{reFile,jdbcType=VARCHAR}, #{reStatus,jdbcType=INTEGER}, #{woId,jdbcType=VARCHAR}, 
+      #{reContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamReport" >
+    insert into oa_team_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reId != null" >
+        re_id,
+      </if>
+      <if test="reName != null" >
+        re_name,
+      </if>
+      <if test="reTime != null" >
+        re_time,
+      </if>
+      <if test="reFile != null" >
+        re_file,
+      </if>
+      <if test="reStatus != null" >
+        re_status,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+      <if test="reContent != null" >
+        re_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reId != null" >
+        #{reId,jdbcType=VARCHAR},
+      </if>
+      <if test="reName != null" >
+        #{reName,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null" >
+        #{reTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reFile != null" >
+        #{reFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reStatus != null" >
+        #{reStatus,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="reContent != null" >
+        #{reContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamReport" >
+    update oa_team_report
+    <set >
+      <if test="reName != null" >
+        re_name = #{reName,jdbcType=VARCHAR},
+      </if>
+      <if test="reTime != null" >
+        re_time = #{reTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reFile != null" >
+        re_file = #{reFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reStatus != null" >
+        re_status = #{reStatus,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+      <if test="reContent != null" >
+        re_content = #{reContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.java.entity.OaTeamReport" >
+    update oa_team_report
+    set re_name = #{reName,jdbcType=VARCHAR},
+      re_time = #{reTime,jdbcType=TIMESTAMP},
+      re_file = #{reFile,jdbcType=VARCHAR},
+      re_status = #{reStatus,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR},
+      re_content = #{reContent,jdbcType=LONGVARCHAR}
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamReport" >
+    update oa_team_report
+    set re_name = #{reName,jdbcType=VARCHAR},
+      re_time = #{reTime,jdbcType=TIMESTAMP},
+      re_file = #{reFile,jdbcType=VARCHAR},
+      re_status = #{reStatus,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where re_id = #{reId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -108,8 +108,8 @@
 									<li mid="tab3" funurl="${pageContext.request.contextPath}/pjsp/deptManger.jsp"><a tabindex="-1" href="javascript:void(0);">部门管理</a></li>
 									<li mid="tab4" funurl="${pageContext.request.contextPath}/pjsp/"><a tabindex="-1" href="javascript:void(0);">查询员工</a></li>
 									<li mid="tab5" funurl="${pageContext.request.contextPath}/pjsp/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">增加员工</a></li>
-									<li mid="tab5" funurl="${pageContext.request.contextPath}/xu/flow/depolyee.jsp"><a tabindex="-1" href="javascript:void(0);">流程部署</a></li>
-									<li mid="tab5" funurl="${pageContext.request.contextPath}/process/queryProcessDefinition.do"><a tabindex="-1" href="javascript:void(0);">查看流程定义</a></li>
+									<li mid="tab6" funurl="${pageContext.request.contextPath}/xu/flow/depolyee.jsp"><a tabindex="-1" href="javascript:void(0);">流程部署</a></li>
+									<li mid="tab7" funurl="${pageContext.request.contextPath}/process/queryProcessDefinition.do"><a tabindex="-1" href="javascript:void(0);">查看流程定义</a></li>
 								</ul>
 							</div>
 						</li>
