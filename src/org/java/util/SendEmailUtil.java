@@ -62,7 +62,7 @@ public class SendEmailUtil {
 
     public static void sendSimpleMail(String[] accounts,String info,String title){
 
-    //创建简单邮件对象
+    //创建简单邮件对象aa
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
