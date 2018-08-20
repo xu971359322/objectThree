@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -70,7 +71,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>1231231231</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -95,9 +96,9 @@
 						<li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>邮件管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i> </a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="page-profile.html" class="">部门管理</a></li>
-									<li><a href="page-login.html" class="">查询员工</a></li>
-									<li><a href="page-lockscreen.html" class="">增加员工</a></li>
+									<li><a href="${pageContext.request.contextPath}/email/groupEmail.do" target="right" class="">公司邮箱</a></li>
+									<li><a href="page-login.html" class="">外网邮箱</a></li>
+									<li><a href="page-lockscreen.html" class="">邮箱设置</a></li>
 								</ul>
 							</div>
 						</li>
@@ -116,51 +117,13 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<h3 class="page-title">Charts</h3>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Line Chart</h3>
-								</div>
-								<div class="panel-body">
-									<div id="demo-line-chart" class="ct-chart"></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Bar Chart</h3>
-								</div>
-								<div class="panel-body">
-									<div id="demo-bar-chart" class="ct-chart"></div>
-								</div>
-							</div>
+					<div class="panel">
+						<div class="panel-heading" style="height: 600px">
+							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:100%;height:100%'></iframe>
+
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Area Chart</h3>
-								</div>
-								<div class="panel-body">
-									<div id="demo-area-chart" class="ct-chart"></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Multiple Chart</h3>
-								</div>
-								<div class="panel-body">
-									<div id="multiple-chart" class="ct-chart"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->

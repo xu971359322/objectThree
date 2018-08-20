@@ -14,10 +14,11 @@
     <result column="wo_stauts" property="woStauts" jdbcType="INTEGER" />
     <result column="wo_stationId" property="woStationid" jdbcType="INTEGER" />
     <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
+    <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     wo_id, wo_name, wo_loginName, wo_loginPwd, wo_role, wo_gender, wo_email, wo_infomation, 
-    wo_photo, wo_stauts, wo_stationId, wo_deptId
+    wo_photo, wo_stauts, wo_stationId, wo_deptId, wo_phone
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -33,13 +34,13 @@
     insert into oa_team_worker (wo_id, wo_name, wo_loginName, 
       wo_loginPwd, wo_role, wo_gender, 
       wo_email, wo_infomation, wo_photo, 
-      wo_stauts, wo_stationId, wo_deptId
-      )
+      wo_stauts, wo_stationId, wo_deptId, 
+      wo_phone)
     values (#{woId,jdbcType=VARCHAR}, #{woName,jdbcType=VARCHAR}, #{woLoginname,jdbcType=VARCHAR}, 
       #{woLoginpwd,jdbcType=VARCHAR}, #{woRole,jdbcType=INTEGER}, #{woGender,jdbcType=CHAR}, 
       #{woEmail,jdbcType=VARCHAR}, #{woInfomation,jdbcType=VARCHAR}, #{woPhoto,jdbcType=VARCHAR}, 
-      #{woStauts,jdbcType=INTEGER}, #{woStationid,jdbcType=INTEGER}, #{woDeptid,jdbcType=INTEGER}
-      )
+      #{woStauts,jdbcType=INTEGER}, #{woStationid,jdbcType=INTEGER}, #{woDeptid,jdbcType=INTEGER}, 
+      #{woPhone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.OaTeamWorker" >
     insert into oa_team_worker
@@ -80,6 +81,9 @@
       <if test="woDeptid != null" >
         wo_deptId,
       </if>
+      <if test="woPhone != null" >
+        wo_phone,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="woId != null" >
@@ -117,6 +121,9 @@
       </if>
       <if test="woDeptid != null" >
         #{woDeptid,jdbcType=INTEGER},
+      </if>
+      <if test="woPhone != null" >
+        #{woPhone,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +163,9 @@
       <if test="woDeptid != null" >
         wo_deptId = #{woDeptid,jdbcType=INTEGER},
       </if>
+      <if test="woPhone != null" >
+        wo_phone = #{woPhone,jdbcType=VARCHAR},
+      </if>
     </set>
     where wo_id = #{woId,jdbcType=VARCHAR}
   </update>
@@ -171,7 +181,8 @@
       wo_photo = #{woPhoto,jdbcType=VARCHAR},
       wo_stauts = #{woStauts,jdbcType=INTEGER},
       wo_stationId = #{woStationid,jdbcType=INTEGER},
-      wo_deptId = #{woDeptid,jdbcType=INTEGER}
+      wo_deptId = #{woDeptid,jdbcType=INTEGER},
+      wo_phone = #{woPhone,jdbcType=VARCHAR}
     where wo_id = #{woId,jdbcType=VARCHAR}
   </update>
 </mapper>
