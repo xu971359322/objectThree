@@ -17,6 +17,16 @@ public class OaMeeting {
 
     private String woId;
 
+    private Integer mstate;
+
+    public Integer getMstate() {
+        return mstate;
+    }
+
+    public void setMstate(Integer mstate) {
+        this.mstate = mstate;
+    }
+
     public Integer getmId() {
         return mId;
     }
@@ -71,5 +81,19 @@ public class OaMeeting {
 
     public void setWoId(String woId) {
         this.woId = woId == null ? null : woId.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "OaMeeting{" +
+                "mId=" + mId +
+                ", mTitle='" + mTitle + '\'' +
+                ", mpId=" + mpId +
+                ", mBegintime=" + mBegintime +
+                ", eEndtime=" + eEndtime +
+                ", mContent='" + mContent + '\'' +
+                ", woId='" + woId + '\'' +
+                ", mstate=" + mstate +
+                '}';
     }
 }

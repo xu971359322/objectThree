@@ -95,6 +95,14 @@ public class UserController extends BaseController {
         return "/index";
     }
 
+    @RequestMapping("/showMainDetail")
+    public String showMainDetail() throws Exception{
+        return "";
+    }
+
+
+
+
     @RequestMapping("/exit")
     public String exit() throws Exception {
         Subject subject = SecurityUtils.getSubject();

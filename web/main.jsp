@@ -78,8 +78,8 @@
 		</nav>
 		
 		<div class="content">
-					<div class="container">		
-			 		<div id="sidebar-nav" class="sidebar" >
+					<div class="container">
+			 		<div id="sidebar-nav" class="sidebar">
 						<div class="sidebar-scroll">
 							<nav>
 								<ul class="nav">

@@ -168,9 +168,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                        <div class="col-md-4">
                         <!-- PANEL DEFAULT -->
-                        <div class="panel">
+                       <%-- <div class="panel">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Panel Default</h3>
                                 <div class="right">
@@ -185,7 +185,7 @@
                                     infomediaries. Monotonectally incubate web-enabled communities rather than
                                     process-centric.</p>
                             </div>
-                        </div>
+                        </div>--%>
                         <!-- END PANEL DEFAULT -->
                     </div>
                     <div class="col-md-4">

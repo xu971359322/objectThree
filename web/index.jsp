@@ -24,8 +24,10 @@
 		<img src="${pageContext.request.contextPath}/images/avtar.png" />
 	</div>
 	<form action="${pageContext.request.contextPath}/user/loginInfo.do" method="post">
-			<input type="text" class="text" name="username"  onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
-			<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<input type="text" class="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
+		<!-- <div class="key"> -->
+		<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+		<!-- </div> -->
 		<div class="form-group" style="width:300px;height: 0px;position:relative;left:90px;top:-30px;z-index:9">
 			<select class="form-control" style="width:300px;" name="workerRole">
 				<c:forEach items="${sessionScope.roleList}" var="role">

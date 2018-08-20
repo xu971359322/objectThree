@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<%--<jsp:forward page="${pageContext.request.contextPath}/user/load.do"/>--%>
+<jsp:forward page="${pageContext.request.contextPath}/user/load.do"/>
 </body>
 </html>

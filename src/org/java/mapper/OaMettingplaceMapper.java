@@ -2,6 +2,8 @@ package org.java.mapper;
 
 import org.java.entity.OaMettingplace;
 
+import java.util.List;
+
 public interface OaMettingplaceMapper {
     int deleteByPrimaryKey(Integer mpId);
 
@@ -14,4 +16,6 @@ public interface OaMettingplaceMapper {
     int updateByPrimaryKeySelective(OaMettingplace record);
 
     int updateByPrimaryKey(OaMettingplace record);
+
+    List<OaMettingplace> getPlaceAll();
 }

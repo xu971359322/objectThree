@@ -18,6 +18,11 @@
     from oa_mettingplace
     where mp_id = #{mpId,jdbcType=INTEGER}
   </select>
+  <select id="getPlaceAll" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from oa_mettingplace
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from oa_mettingplace
     where mp_id = #{mpId,jdbcType=INTEGER}

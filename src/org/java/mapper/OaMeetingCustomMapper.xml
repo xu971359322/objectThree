@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaMeetingCustomMapper">
+    <resultMap id="BaseResultMap" type="org.java.entity.OaMeetingCustom">
+        <id column="m_id" property="mId" jdbcType="INTEGER" />
+        <result column="m_title" property="mTitle" jdbcType="VARCHAR" />
+        <result column="mp_id" property="mpId" jdbcType="INTEGER" />
+<!--        <result column="m_begintime" property="mBegintime"  />
+        <result column="e_endtime" property="eEndtime" />-->
+        <result column="m_content" property="mContent" />
+        <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+        <result column="m_state" property="mstate" jdbcType="INTEGER" />
+        <result column="colorInfo" property="colorInfo" jdbcType="VARCHAR" />
+        <result column="m_begintime" property="startTime"  />
+        <result column="e_endtime" property="endTime" />
+        <result column="m_remark" property="mremark"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        m_id, m_title, mp_id, m_begintime, e_endtime, m_content, wo_id
+    </sql>
+    <select id="getMeetingAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from oa_meeting
+    </select>
+
+    <select id="getList" resultMap="BaseResultMap">
+        SELECT * FROM  oa_meeting WHERE m_begintime BETWEEN #{start} AND #{end}
+    </select>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        SELECT * FROM  oa_meeting WHERE m_begintime BETWEEN #{start} AND #{end}
+    </select>
+
+    <select id="getDetpPersonList" resultType="java.util.HashMap">
+        SELECT wo_id,wo_name,de_name FROM oa_team_worker ow,oa_team_dept od WHERE ow.wo_deptId=od.de_id AND ow.wo_role!=1
+    </select>
+
+    <insert id="addInfo" parameterType="OaMeetingCustom">
+        INSERT INTO `oa_team_four`.`oa_meeting` (`m_id`, `m_title`,`mp_id`,`m_begintime`, `e_endtime`, `m_content`, `wo_id`, `m_state`,`colorInfo`,`m_remark`)VALUES
+        (NULL,#{mTitle},#{mpId},#{startTime},#{endTime},#{mContent},#{woId},#{mstate},#{colorInfo},#{mremark})
+    </insert>
+
+    <select id="queryCalendearById" parameterType="int" resultMap="BaseResultMap">
+        SELECT * FROM  oa_meeting WHERE m_id=#{mid}
+    </select>
+</mapper>

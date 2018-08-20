@@ -46,5 +46,5 @@
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
     <!-- 扫描的包 -->
-    <context:component-scan base-package="org.java.*" />
+    <context:component-scan base-package="org.java" />
 </beans>
