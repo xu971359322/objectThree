@@ -15,4 +15,8 @@ public interface SysUserService {
 	public List<String> getPermissions(Integer userId);*/
 
 	List<Map<String,Object>> one();
+
+	List<OaTeamWorker> userByDeptId(Object[] dept);
+
+	OaTeamWorker selWorkerById(String wid);
 }

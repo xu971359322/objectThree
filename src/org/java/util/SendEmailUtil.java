@@ -3,9 +3,11 @@ package org.java.util;
 import org.junit.Test;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
+@Component
 public class SendEmailUtil {
 
     private final static  String SERVICE_HOST = "smtp.qq.com";//QQ服务器
@@ -78,9 +80,4 @@ public class SendEmailUtil {
 
     }
 
-    @Test
-    public void show(){
-        String email[] ={"1791042023@qq.com"};
-        sendSimpleMail(email,"李狗仔","我是你的爸爸");
-    }
 }

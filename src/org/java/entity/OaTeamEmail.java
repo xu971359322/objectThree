@@ -15,6 +15,8 @@ public class OaTeamEmail {
 
     private Integer emStauts;
 
+    private String emFile;
+
     private String emInfomation;
 
     public String getEmId() {
@@ -65,11 +67,34 @@ public class OaTeamEmail {
         this.emStauts = emStauts;
     }
 
+    public String getEmFile() {
+        return emFile;
+    }
+
+    public void setEmFile(String emFile) {
+        this.emFile = emFile == null ? null : emFile.trim();
+    }
+
     public String getEmInfomation() {
         return emInfomation;
     }
 
     public void setEmInfomation(String emInfomation) {
         this.emInfomation = emInfomation == null ? null : emInfomation.trim();
+    }
+
+
+    @Override
+    public String toString() {
+        return "OaTeamEmail{" +
+                "emId='" + emId + '\'' +
+                ", emTitle='" + emTitle + '\'' +
+                ", woFid='" + woFid + '\'' +
+                ", emTime=" + emTime +
+                ", emLevel=" + emLevel +
+                ", emStauts=" + emStauts +
+                ", emFile='" + emFile + '\'' +
+                ", emInfomation='" + emInfomation + '\'' +
+                '}';
     }
 }

@@ -103,6 +103,7 @@
 									<li><a href="page-profile.html" class="">部门管理</a></li>
 									<li><a href="page-login.html" class="">查询员工</a></li>
 									<li><a href="page-lockscreen.html" class="">增加员工</a></li>
+									<li><a href="${pageContext.request.contextPath}/xu/flow/deployee.jsp" class="">部署流程定义</a></li>
 								</ul>
 							</div>
 						</li>
