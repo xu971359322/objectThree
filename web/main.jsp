@@ -15,14 +15,8 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/demo.css">
-	<!-- GOOGLE FONTS -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	<!-- ICONS -->
-<%--	<link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="${pageContext.request.contextPath}/assets/img/favicon.png">--%>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/b.tabs.css"/>
 </head>
-
 <body>
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -85,18 +79,18 @@
 		
 		<div class="content">
 					<div class="container">		
-			 		<div id="sidebar-nav" class="sidebar" ><!-- style="display:none;" -->
+			 		<div id="sidebar-nav" class="sidebar" >
 						<div class="sidebar-scroll">
 							<nav>
 								<ul class="nav">
 									<li>
 										<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>个人办公</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-										<div id="subPages" class="collapse ">
+										<div id="subPages" class="collapse">
 											<ul class="nav" id="menuSideBar">
-												<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
+												<li mid="tab1" funurl="${pageContext.request.contextPath}/pjsp/index.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
 												<li mid="tab2" funurl="${pageContext.request.contextPath}/admin.jsp"><a tabindex="-1" href="javascript:void(0);">申请报告</a></li>
 												<li mid="tab3" funurl="${pageContext.request.contextPath}/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">办理任务</a></li>
-												<li mid="tab4" funurl="${pageContext.request.contextPath}/demo.do"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
+												<li mid="tab4" funurl="${pageContext.request.contextPath}/pjsp/chattalk.jsp"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
 											</ul>
 										</div>
 									</li>
@@ -105,24 +99,23 @@
 									<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
 									<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
 									<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
-									<li><a href="admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/processDefinition.jsp" class=""><i class="lnr lnr-text-format"></i> <span>流程部署</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
 								</ul>
 							</nav>
 						</div>
 					</div>
-				 <div style="background-color:; border:2px solid blue;width:1640px;height:860px;position:relative;top:86px;left:-120px;">
+				<div style="width:1640px;height:860px;position:relative;top:86px;left:-130px;">
 					<div id="mainFrameTabs" style="width:1640px;height:860px;border:0px solid red;">
 					         <ul class="nav nav-tabs" role="tablist"> 
 					            <li role="presentation" class="active noclose"><a href="#bTabs_navTabsMainPage" data-toggle="tab">首页</a></li> 
-					          </ul> 
-					          
-					          <div class="tab-content"> 
-					         	   <div class="tab-pane active" id="bTabs_navTabsMainPage"> 
-						              <div class="page-header"> 
-						                <h2 style="font-size: 31.5px;text-align: center;font-weight: normal;">欢迎使用</h2> 
-						              </div> 
-						              <div style="text-align: center;font-size: 20px;line-height: 20px;"> 欢迎使用 bTabs 插件！ </div> 
-					               </div> 
+					          </ul>
+					          <div class="tab-content">
+					         	   <div class="tab-pane active" id="bTabs_navTabsMainPage">
+						              <div style="text-align: center;font-size: 20px;line-height: 20px;">
+										  <iframe src="${pageContext.request.contextPath}/pjsp/programme.jsp" width="1630px"height="800px" frameborder="0"></iframe>
+									  </div>
+					               </div>
 					  		 </div>
 					</div>
 				</div>
