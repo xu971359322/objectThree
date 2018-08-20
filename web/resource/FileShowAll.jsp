@@ -18,7 +18,7 @@
     <!-- ICONS -->
     <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath }/assets/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="${pageContext.request.contextPath }/assets/img/favicon.png">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resource/js/assets/js/dataTables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/js/dataTables/dataTables.bootstrap.css">
 
 
     <style type="text/css">
