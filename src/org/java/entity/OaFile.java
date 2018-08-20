@@ -17,6 +17,8 @@ public class OaFile {
 
     private String selUid;
 
+    private String fMess;
+
     public Integer getfId() {
         return fId;
     }
@@ -71,5 +73,13 @@ public class OaFile {
 
     public void setSelUid(String selUid) {
         this.selUid = selUid == null ? null : selUid.trim();
+    }
+
+    public String getfMess() {
+        return fMess;
+    }
+
+    public void setfMess(String fMess) {
+        this.fMess = fMess;
     }
 }

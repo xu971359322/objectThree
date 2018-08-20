@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaResouMapper" >
+    <resultMap id="BaseResultMap" type="org.java.entity.OaFile">
+        <id column="f_id" property="fId" jdbcType="INTEGER"/>
+        <result column="f_name" property="fName" jdbcType="VARCHAR"/>
+        <result column="f_time" property="fTime" jdbcType="VARCHAR"/>
+        <result column="f_type" property="fType" jdbcType="VARCHAR"/>
+        <result column="f_stauts" property="fStauts" jdbcType="INTEGER"/>
+        <result column="wo_id" property="woId" jdbcType="VARCHAR"/>
+        <result column="sel_uid" property="selUid" jdbcType="VARCHAR"/>
+        <result column="f_mess" property="fMess" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="oaResouAll" parameterType="org.java.entity.OaFile">
+      SELECT * from oa_file
+    </select>
+    
+    <insert id="oaResouAdd" parameterType="m">
+        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess})
+    </insert>
+
+</mapper>

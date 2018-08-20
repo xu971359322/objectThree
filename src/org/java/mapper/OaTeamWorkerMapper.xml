@@ -185,4 +185,9 @@
       wo_phone = #{woPhone,jdbcType=VARCHAR}
     where wo_id = #{woId,jdbcType=VARCHAR}
   </update>
+
+  <select id="oaWorkerAll" resultMap="BaseResultMap">
+    select * from oa_team_worker
+  </select>
+
 </mapper>

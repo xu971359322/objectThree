@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-       <package name="org.java.entity"/>
+        <typeAlias type="java.util.HashMap" alias="m"/>
+
+        <package name="org.java.entity"/>
     </typeAliases>
 </configuration>
