@@ -14,6 +14,7 @@ public interface OaTeamWorkerCustomMapper{
      * @return
      */
     public List<Map<String,Object>> loginInfo(@Param("username") String username);/*,@Param("workerRole") Integer workerRole*/
+
     OaTeamWorker loginInfo(@Param("username") String username,@Param("password")String password);
 
     List<Map<String,Object>> one();

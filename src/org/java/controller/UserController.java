@@ -94,6 +94,7 @@ public class UserController extends BaseController {
         }
         return "/index";
     }
+/*
 
     @RequestMapping("/showMainDetail")
     public String showMainDetail() throws Exception{
@@ -101,6 +102,7 @@ public class UserController extends BaseController {
     }
 
 
+*/
 
 
     @RequestMapping("/exit")
