@@ -93,23 +93,19 @@
 										<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>个人办公</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 										<div id="subPages" class="collapse ">
 											<ul class="nav" id="menuSideBar">
-
 												<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
-
 												<li mid="tab2" funurl="${pageContext.request.contextPath}/admin.jsp"><a tabindex="-1" href="javascript:void(0);">申请报告</a></li>
-
 												<li mid="tab3" funurl="${pageContext.request.contextPath}/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">办理任务</a></li>
-
 												<li mid="tab4" funurl="${pageContext.request.contextPath}/demo.do"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
 											</ul>
 										</div>
 									</li>
-									<li><a href="email.jsp" class=""><i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
-									<li><a href="office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/email.jsp" class=""><i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
 									<li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
-									<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
-									<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
-									<li><a href="admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
+									<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
 								</ul>
 							</nav>
 						</div>
