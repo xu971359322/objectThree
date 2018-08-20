@@ -6,9 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>
-	<table width="100%" border="1" align="center">
+	<table class="table table-striped"  align="center">
 		<Tr>
 			<th>流程定义ID</th>
 			<th>流程定义名称</th>
@@ -24,16 +27,16 @@
 				<Td>${p.name }</Td>
 				<Td>${p.deploymentId }</Td>
 				<Td>
-					<a target="_blank" href="${pageContext.request.contextPath}/showResources.action?processDefinitionId=${p.id }&type=bpmn">${p.resourceName }</a>	
+					<a target="_blank" href="${pageContext.request.contextPath}/process/showResources.do?processDefinitionId=${p.id }&type=bpmn">${p.resourceName }</a>
 				</Td>
 				<Td>
 				
-					<a target="_blank" href="${pageContext.request.contextPath}/showResources.action?processDefinitionId=${p.id }&type=png">${p.diagramResourceName }</a>
+					<a target="_blank" href="${pageContext.request.contextPath}/process/showResources.do?processDefinitionId=${p.id }&type=png">${p.diagramResourceName }</a>
 				
 				</Td>
 				<Td>${p.version }</Td>
 				<Td>
-					<a href="${pageContext.request.contextPath}/delProcess.action?id=${p.deploymentId }">删除</a>
+					<a href="${pageContext.request.contextPath}/process/delProcess.do?id=${p.deploymentId }">删除</a>
 				</Td>
 			</Tr>
 			</c:forEach>

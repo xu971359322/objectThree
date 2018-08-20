@@ -64,14 +64,14 @@ public class ProcessController {
                 .createProcessDefinitionQuery();
 
         // 设置要查询的流程定义的key--------------实际就是bpmn文件的id名称
-        query.processDefinitionKey(processKey);
+        //query.processDefinitionKey("report");
 
         // 查询所有的流程定义
         List<ProcessDefinition> list = query.list();
 
         model.addAttribute("list", list);
 
-        return "/flow/showProcessDefinition";
+        return "/xu/flow/showProcessDefinition";
     }
 
     //查看流程图或者bpmn文件
@@ -155,7 +155,7 @@ public class ProcessController {
 
         System.out.println(x+"   "+y+"   "+width+"  "+height);
 
-        return "/flow/showActiveMap";//到页面显示流程图
+        return "/xu/flow/showActiveMap";//到页面显示流程图
     }
 
     //删除流程定义

@@ -9,24 +9,27 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath }/deployed.do" method="post" enctype="multipart/form-data">
-    <table>
-        <TR>
-            <Th colspan="2">流程部署</Th>
-        </TR>
-        <tr>
-            <Td>输入流程名称</Td>
+<form action="${pageContext.request.contextPath }/process/deployed.do" method="post" enctype="multipart/form-data">
+    <div align="center"><h1>流程部署</h1></div>
+
+    <table  class="table table-striped"  align="center">
+
+        <tr >
+            <Td align="center">输入流程名称</Td>
             <Td><input type="text" name="name" /></Td>
         </tr>
         <tr>
-            <Td>添加zip文件</Td>
+            <Td  align="center">添加zip文件</Td>
             <Td><input type="file" name="file" /></Td>
         </tr>
-        <Tr>
+        <Tr align="center">
             <Td colspan="2">
-                <input type="submit" value="确认部署"/>
+                <button class="btn btn-info" type="submit">确认部署</button>
             </Td>
         </Tr>
             <%--<TR>--%>

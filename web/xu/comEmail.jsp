@@ -11,10 +11,10 @@
 <head>
     <title>Title</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/xu/js/jquery-1.8.3.min.js"></script>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/xu/js/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/xu/js/jquery-1.8.3.min.js"></script>
 
     <script src="${pageContext.request.contextPath }/js/dataTables/jquery.dataTables.js"></script>
     <script src="${pageContext.request.contextPath }/js/dataTables/dataTables.bootstrap.js"></script>

@@ -92,7 +92,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
 						<li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>邮件管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i> </a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
@@ -102,11 +102,11 @@
 								</ul>
 							</div>
 						</li>
-						<li><a href="office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
-						<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
-						<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
-						<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
-						<li><a href="admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
 					</ul>
 				</nav>
 			</div>
