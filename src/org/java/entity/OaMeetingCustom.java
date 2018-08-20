@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaMeetingCustom extends OaMeeting{//扩展属性
+import java.io.Serializable;
+
+public class OaMeetingCustom extends OaMeeting implements Serializable {//扩展属性
 
     private Boolean ifAllDay;// 是否全天
     private String colorInfo;// 颜色状态   1绿色,2灰色,3橙色

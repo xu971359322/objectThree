@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OaAttendance {
+public class OaAttendance implements Serializable{
     private Integer atId;
 
     private Date atBegintime;

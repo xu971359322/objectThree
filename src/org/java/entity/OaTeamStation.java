@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaTeamStation {
+import java.io.Serializable;
+
+public class OaTeamStation implements Serializable{
     private Integer stId;
 
     private String stName;

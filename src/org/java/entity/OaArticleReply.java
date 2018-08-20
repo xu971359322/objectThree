@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OaArticleReply {
+public class OaArticleReply implements Serializable{
     private Integer bbsReplyId;
 
     private Integer bbsTopicId;

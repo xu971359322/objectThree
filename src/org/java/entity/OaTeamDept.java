@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaTeamDept {
+import java.io.Serializable;
+
+public class OaTeamDept implements Serializable {
     private Integer deId;
 
     private String deName;

@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaMeetingQuery {
+import java.io.Serializable;
+
+public class OaMeetingQuery implements Serializable {
     //会议信息
     private OaMeeting oaMeeting;
 

@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaTeamWorker {
+import java.io.Serializable;
+
+public class OaTeamWorker implements Serializable{
     private String woId;
 
     private String woName;

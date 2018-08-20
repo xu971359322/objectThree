@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaMettingplace {
+import java.io.Serializable;
+
+public class OaMettingplace implements Serializable {
     private Integer mpId;
 
     private String mpTitle;
