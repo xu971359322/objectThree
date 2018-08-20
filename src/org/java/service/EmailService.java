@@ -29,6 +29,8 @@ public interface EmailService {
 
     public List<OaTeamEmail> myEmail(String wid,Integer status);
 
+
     public void updateEmail(Integer status,String emId);
 
 }
+

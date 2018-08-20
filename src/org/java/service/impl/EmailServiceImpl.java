@@ -60,6 +60,7 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public List<OaTeamEmail> myEmail( String wid,Integer status) {
         System.out.println(wid+"    "+status);
+
         return oaTeamEmailMapperCustom.myEmail(wid,status);
     }
 

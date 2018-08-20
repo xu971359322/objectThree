@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamReportMapperCustom" >
+
+
+  <select id="selLeaveById" resultMap="BaseResultMap">
+    SELECT  * FROM  oa_team_report where wo_id= #{id}
+  </select>
+
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamReport" >
+    <id column="re_id" property="reId" jdbcType="VARCHAR" />
+    <result column="re_name" property="reName" jdbcType="VARCHAR" />
+    <result column="re_time" property="reTime" jdbcType="TIMESTAMP" />
+    <result column="re_file" property="reFile" jdbcType="VARCHAR" />
+    <result column="re_status" property="reStatus" jdbcType="INTEGER" />
+    <result column="re_content" property="reContent" jdbcType="LONGVARCHAR" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+
+</mapper>
