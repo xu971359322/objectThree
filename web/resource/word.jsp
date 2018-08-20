@@ -30,7 +30,7 @@
                 <div class="col-md-2 column" style="padding-left: 10px">
                     <ul class="lis">
                         <li>
-                            <a href="${pageContext.request.contextPath}/resou/resouAll.do">公司所有文档</a><br/><br/>
+                            <a href="${pageContext.request.contextPath}/resou/resouAll.do" target="myfra">公司所有文档</a><br/><br/>
                         </li>
                         <li>
                             <a href="">私密文档</a><br/><br/>
@@ -50,7 +50,9 @@
                     </ul>
                 </div>
                 <div class="col-md-10 column">
-                    <iframe name="myfra" style="height: 98%; width: 100%"></iframe>
+                    <iframe name="myfra" style="height: 98%; width: 100%">
+
+                    </iframe>
                 </div>
     </div>
 </div>

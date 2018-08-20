@@ -13,7 +13,13 @@
                 if(this.checked==true){
                         $('#myModal').modal('show');
                 }
-            })
+            });
+                $("#subm").click(function(){
+                    $("input :checkbox[checked]").each(function(i){
+                        alert(111)
+                       var str = $(this).val();
+                    });
+                });
             $('#myfrm').submit(function () {
                 var  selectVal= $('[name=type]').val();
 
@@ -67,7 +73,7 @@
                 <div class="checkbox">
                     <label><input type="checkbox" name="sel" />是否设置为私密文件</label>
                 </div>
-
+                    <input type="hidden" value="" id="hidUser">
                 <!-- 模态框（Modal） -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -80,17 +86,15 @@
                                     指定给
                                 </h4>
                             </div>
-                            <div class="modal-body">
-                                <div class="checkbox">
-                                    <c:forEach items="${sessionScope.resouUserList}" var="l">
+                            <div class="modal-body" id="modal">
+                                <c:forEach items="${sessionScope.resouUserList}" var="l">
                                         <label><input type="checkbox" name="user" value="${l.woId}"/>${l.woName}</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    </c:forEach>
-                                </div>
+                                </c:forEach>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                 </button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">提交更改
+                                <button type="button" id="subm" class="btn btn-primary" data-dismiss="modal">提交更改
                                 </button>
                             </div>
                         </div><!-- /.modal-content -->

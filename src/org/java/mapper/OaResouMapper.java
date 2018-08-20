@@ -1,6 +1,7 @@
 package org.java.mapper;
 
 import org.java.entity.OaArticleReply;
+import org.java.entity.OaFile;
 import org.java.entity.OaTeamWorker;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface OaResouMapper {
 
     public void oaResouAdd(Map<String,Object> m);
 
-    public List<Map<String, Object>> oaReouAll();
+    public List<OaFile> oaReouAll();
 }
