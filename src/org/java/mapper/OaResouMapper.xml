@@ -10,14 +10,15 @@
         <result column="wo_id" property="woId" jdbcType="VARCHAR"/>
         <result column="sel_uid" property="selUid" jdbcType="VARCHAR"/>
         <result column="f_mess" property="fMess" jdbcType="VARCHAR"/>
+        <result column="f_length" property="fLenth" jdbcType="VARCHAR"/>
+        <result column="f_downCount" property="fdownCount" jdbcType="VARCHAR"/>
     </resultMap>
-
-    <select id="oaResouAll" parameterType="org.java.entity.OaFile">
-      SELECT * from oa_file
+    <select id="oaReouAll" resultMap="BaseResultMap">
+        SELECT f.* FROM oa_file f  WHERE f.f_stauts = 0 AND f.sel_uid = ''
     </select>
     
     <insert id="oaResouAdd" parameterType="m">
-        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess})
+        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess},#{fLenth},#{down})
     </insert>
 
 </mapper>

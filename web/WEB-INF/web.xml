@@ -29,26 +29,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <filter>
-        <filter-name>shiroFilter</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-        <!-- 第一个属性，谁来控制shiro的生命周期(容器控制) -->
-        <init-param>
-            <param-name>targetFilterLifecycle</param-name>
-            <param-value>true</param-value>
-        </init-param>
-        <init-param>
-            <param-name>targetBeanName</param-name>
-            <param-value>shiroFilter</param-value>
-        </init-param>
-    </filter>
-
-    <!-- 配置过滤器，拦截所有请求，交给shiro进行处理 -->
-    <filter-mapping>
-        <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -63,6 +43,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>load.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

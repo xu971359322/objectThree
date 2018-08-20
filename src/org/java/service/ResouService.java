@@ -1,5 +1,6 @@
 package org.java.service;
 
+import org.java.entity.OaFile;
 import org.java.entity.OaTeamWorker;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface ResouService {
 
     public void resouAdd(Map<String,Object> m);
 
-    public List<Map<String,Object>> oaReouAll();
+    public List<OaFile> oaReouAll();
 }

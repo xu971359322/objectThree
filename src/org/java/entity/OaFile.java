@@ -19,6 +19,11 @@ public class OaFile {
 
     private String fMess;
 
+    private Integer fLenth;
+
+    private Integer fdownCount;
+
+
     public Integer getfId() {
         return fId;
     }
@@ -81,5 +86,22 @@ public class OaFile {
 
     public void setfMess(String fMess) {
         this.fMess = fMess;
+    }
+
+
+    public Integer getFdownCount() {
+        return fdownCount;
+    }
+
+    public void setFdownCount(Integer fdownCount) {
+        this.fdownCount = fdownCount;
+    }
+
+    public Integer getfLenth() {
+        return fLenth;
+    }
+
+    public void setfLenth(Integer fLenth) {
+        this.fLenth = fLenth;
     }
 }
