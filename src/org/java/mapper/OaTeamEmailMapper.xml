@@ -8,12 +8,13 @@
     <result column="em_time" property="emTime" jdbcType="TIMESTAMP" />
     <result column="em_level" property="emLevel" jdbcType="INTEGER" />
     <result column="em_stauts" property="emStauts" jdbcType="INTEGER" />
+    <result column="em_file" property="emFile" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="org.java.entity.OaTeamEmail" extends="BaseResultMap" >
     <result column="em_infomation" property="emInfomation" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    em_id, em_title, wo_fid, em_time, em_level, em_stauts
+    em_id, em_title, wo_fid, em_time, em_level, em_stauts, em_file
   </sql>
   <sql id="Blob_Column_List" >
     em_infomation
@@ -33,10 +34,10 @@
   <insert id="insert" parameterType="org.java.entity.OaTeamEmail" >
     insert into oa_team_email (em_id, em_title, wo_fid, 
       em_time, em_level, em_stauts, 
-      em_infomation)
+      em_file, em_infomation)
     values (#{emId,jdbcType=VARCHAR}, #{emTitle,jdbcType=VARCHAR}, #{woFid,jdbcType=VARCHAR}, 
       #{emTime,jdbcType=TIMESTAMP}, #{emLevel,jdbcType=INTEGER}, #{emStauts,jdbcType=INTEGER}, 
-      #{emInfomation,jdbcType=LONGVARCHAR})
+      #{emFile,jdbcType=VARCHAR}, #{emInfomation,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.OaTeamEmail" >
     insert into oa_team_email
@@ -58,6 +59,9 @@
       </if>
       <if test="emStauts != null" >
         em_stauts,
+      </if>
+      <if test="emFile != null" >
+        em_file,
       </if>
       <if test="emInfomation != null" >
         em_infomation,
@@ -82,6 +86,9 @@
       <if test="emStauts != null" >
         #{emStauts,jdbcType=INTEGER},
       </if>
+      <if test="emFile != null" >
+        #{emFile,jdbcType=VARCHAR},
+      </if>
       <if test="emInfomation != null" >
         #{emInfomation,jdbcType=LONGVARCHAR},
       </if>
@@ -105,6 +112,9 @@
       <if test="emStauts != null" >
         em_stauts = #{emStauts,jdbcType=INTEGER},
       </if>
+      <if test="emFile != null" >
+        em_file = #{emFile,jdbcType=VARCHAR},
+      </if>
       <if test="emInfomation != null" >
         em_infomation = #{emInfomation,jdbcType=LONGVARCHAR},
       </if>
@@ -118,6 +128,7 @@
       em_time = #{emTime,jdbcType=TIMESTAMP},
       em_level = #{emLevel,jdbcType=INTEGER},
       em_stauts = #{emStauts,jdbcType=INTEGER},
+      em_file = #{emFile,jdbcType=VARCHAR},
       em_infomation = #{emInfomation,jdbcType=LONGVARCHAR}
     where em_id = #{emId,jdbcType=VARCHAR}
   </update>
@@ -127,7 +138,8 @@
       wo_fid = #{woFid,jdbcType=VARCHAR},
       em_time = #{emTime,jdbcType=TIMESTAMP},
       em_level = #{emLevel,jdbcType=INTEGER},
-      em_stauts = #{emStauts,jdbcType=INTEGER}
+      em_stauts = #{emStauts,jdbcType=INTEGER},
+      em_file = #{emFile,jdbcType=VARCHAR}
     where em_id = #{emId,jdbcType=VARCHAR}
   </update>
 </mapper>

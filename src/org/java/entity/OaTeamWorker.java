@@ -130,4 +130,23 @@ public class OaTeamWorker {
     public void setWoPhone(String woPhone) {
         this.woPhone = woPhone == null ? null : woPhone.trim();
     }
+
+    @Override
+    public String toString() {
+        return "OaTeamWorker{" +
+                "woId='" + woId + '\'' +
+                ", woName='" + woName + '\'' +
+                ", woLoginname='" + woLoginname + '\'' +
+                ", woLoginpwd='" + woLoginpwd + '\'' +
+                ", woRole=" + woRole +
+                ", woGender='" + woGender + '\'' +
+                ", woEmail='" + woEmail + '\'' +
+                ", woInfomation='" + woInfomation + '\'' +
+                ", woPhoto='" + woPhoto + '\'' +
+                ", woStauts=" + woStauts +
+                ", woStationid=" + woStationid +
+                ", woDeptid=" + woDeptid +
+                ", woPhone='" + woPhone + '\'' +
+                '}';
+    }
 }

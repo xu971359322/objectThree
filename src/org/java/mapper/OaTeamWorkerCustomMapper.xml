@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.java.mapper.OaTeamWorkerCustomMapper">
-    <!--登录状态，需要身份验证，并且登录的状态可用（员工在职，员工角色状态是否可用）：当系统出现问题时，可以阻止员工操作！-->
-    <!--/*AND a.wo_role=#{workerRole} AND ro_available=1 */-->
-    <select id="loginInfo" resultType="java.util.HashMap">
-      SELECT a.*,b.ro_name,b.ro_id AS roleId FROM oa_team_worker a,oa_team_role b,oa_worker_role c
-        WHERE
-        c.wo_id=a.wo_id
-        AND
-        c.ro_id=b.ro_id  AND a.wo_loginName=#{username}
-    </select>
-    <!--            <if test="username!=null and username!=''">
+    <resultMap id="BaseResultMap" type="org.java.entity.OaTeamWorker" >
+        <id column="wo_id" property="woId" jdbcType="VARCHAR" />
+        <result column="wo_name" property="woName" jdbcType="VARCHAR" />
+        <result column="wo_loginName" property="woLoginname" jdbcType="VARCHAR" />
+        <result column="wo_loginPwd" property="woLoginpwd" jdbcType="VARCHAR" />
+        <result column="wo_role" property="woRole" jdbcType="INTEGER" />
+        <result column="wo_gender" property="woGender" jdbcType="CHAR" />
+        <result column="wo_email" property="woEmail" jdbcType="VARCHAR" />
+        <result column="wo_infomation" property="woInfomation" jdbcType="VARCHAR" />
+        <result column="wo_photo" property="woPhoto" jdbcType="VARCHAR" />
+        <result column="wo_stauts" property="woStauts" jdbcType="INTEGER" />
+        <result column="wo_stationId" property="woStationid" jdbcType="INTEGER" />
+        <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
+        <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
+    </resultMap>
 
+    <select id="loginInfo" resultMap="BaseResultMap">
+        select * from oa_team_worker where wo_loginName= #{username} and wo_loginPwd=#{password}
+    </select>
+
+    <select id="one" resultType="java.util.HashMap">
+        SELECT * FROM oa_team_role
+    </select>
+
+    <select id="userByDeptId" resultMap="BaseResultMap" >
+        select * FROM oa_team_worker
+        <where>
+            <if test="dept!=null">
+                <foreach collection="dept" item="dept" open=" wo_deptId in (" close=")" separator=",">
+                    #{dept}
+                </foreach>
             </if>
-           <if test="workerRole!=null and workerRole!=''">
-               AND a.wo_role=#{workerRole}
-            </if> AND ro_available=1-->
+        </where>
+    </select>
+
 </mapper>

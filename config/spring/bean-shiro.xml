@@ -2,50 +2,10 @@
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
 
-	<!-- 配置shiroFilter(shiro的核心控制器)的相关信息 -->
-	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
-		<property name="loginUrl" value="/user/loginInfo.do"/>
-		<property name="securityManager" ref="securityManager"/>
-		<property name="unauthorizedUrl" value="/refuse.jsp"/>
-		<property name="filterChainDefinitions">
-			<value>
-				<!-- /user/add.do=perms[user:add]
-				/user/del.do=perms=[user:del]
-				/user/update.do=perms[user:update]
-				 /exit.do=logout
-				 -->
-				/favicon.ico=anon
-				/css/**=anon
-				/js/**=anon
-				/images/**=anon
-				/assets/**=anon
-				/pjsp/**=anon
-				/**=authc
-			</value>
-		</property>
-	</bean>
 
 
-	<!-- 配置安全管理器 -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="customRealm"/>
-<!--		<property name="cacheManager" ref="ehcaceh"/>-->
-	</bean>
-	
-	<!-- 注册Realm -->
-	<bean id="customRealm" class="org.java.shiro.CustomRealm">
-		<!-- 指定凭证匹配器，通俗的讲就是如何加密 -->
-		<property name="credentialsMatcher" ref="credentialsMatcher"/>
-	</bean>
-	
-	<!-- 配置凭证匹配器 -->
-	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-		<property name="hashAlgorithmName" value="md5"/>
-		<property name="hashIterations" value="2"/>
-	</bean>
 
-	<!-- 配置异常处理器 -->
-	<bean class="org.java.exception.ExceptionHandler"/>
+
 
 <!--
 	&lt;!&ndash; ehcache &ndash;&gt;

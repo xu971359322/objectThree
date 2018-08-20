@@ -2,9 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.java.mapper.OaTeamEmailMapperCustom" >
 
+    
+    <select id="myEmail" resultMap="BaseResultMap" >
+        SELECT * FROM oa_team_email WHERE  wo_fid=#{wid} AND em_stauts=#{status}
+    </select>
+
   <select id="groupEmail" resultType="java.util.HashMap" parameterType="string">
-     SELECT em_stauts,COUNT(em_stauts) FROM oa_team_email
+     SELECT em_stauts,COUNT(em_stauts) eunm FROM oa_team_email
       WHERE wo_fid =#{wid}
       GROUP BY em_stauts
   </select>
+    
+    <select id="shouCount" resultType="int" parameterType="string">
+      SELECT COUNT(*) FROM oa_team_semail WHERE wo_id =#{wid}
+    </select>
+    
+    <select id="newEmail" parameterType="string" resultType="java.util.HashMap">
+        SELECT em_title,(SELECT wo_name FROM oa_team_worker w WHERE w.wo_id =e.wo_fid ) worker ,em_time,e.em_id,e.em_level,se.se_id,se_status
+        FROM oa_team_semail se ,oa_team_email e
+         WHERE se.em_id =e.em_id
+         AND  se.wo_id =#{wid}
+         AND  se_status =0
+    </select>
+
+    <select id="shouEmail" parameterType="string" resultType="java.util.HashMap">
+        SELECT em_title,(SELECT wo_name FROM oa_team_worker w WHERE w.wo_id =e.wo_fid ) worker ,em_time,e.em_id,e.em_level,se.se_id,se_status
+        FROM oa_team_semail se ,oa_team_email e
+        WHERE se.em_id =e.em_id
+        AND  se.wo_id =#{wid}
+    </select>
+    
+    <select id="lookEmail" resultMap="BaseResultMap" parameterType="string">
+       SELECT  * from oa_team_email where em_id =#{emId}
+    </select>
+
+    <resultMap id="BaseResultMap" type="org.java.entity.OaTeamEmail" >
+        <id column="em_id" property="emId" jdbcType="VARCHAR" />
+        <result column="em_title" property="emTitle" jdbcType="VARCHAR" />
+        <result column="wo_fid" property="woFid" jdbcType="VARCHAR" />
+        <result column="em_time" property="emTime" jdbcType="TIMESTAMP" />
+        <result column="em_level" property="emLevel" jdbcType="INTEGER" />
+        <result column="em_stauts" property="emStauts" jdbcType="INTEGER" />
+        <result column="em_file" property="emFile" jdbcType="VARCHAR" />
+        <result column="em_infomation" property="emInfomation" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    
 </mapper>
