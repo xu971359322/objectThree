@@ -24,7 +24,7 @@
     <select id="one" resultType="java.util.HashMap">
         SELECT * FROM oa_team_role
     </select>
-    
+
     <select id="userByDeptId" resultMap="BaseResultMap" >
         select * FROM oa_team_worker
         <where>
@@ -35,4 +35,5 @@
             </if>
         </where>
     </select>
+
 </mapper>

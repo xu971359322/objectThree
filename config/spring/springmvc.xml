@@ -22,6 +22,13 @@
     <!--组件扫描 扫描所有注解-->
      <context:component-scan base-package="org.java.controller"/>
 
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+    <mvc:resources mapping="/assets/**" location="/assets/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/pjsp/**" location="/pjsp/"/>
+
+
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--后缀-->
