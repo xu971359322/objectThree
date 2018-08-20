@@ -5,6 +5,8 @@ public class OaTeamRole {
 
     private String roName;
 
+    private Integer roAvailable;
+
     public Integer getRoId() {
         return roId;
     }
@@ -21,11 +23,20 @@ public class OaTeamRole {
         this.roName = roName == null ? null : roName.trim();
     }
 
+    public Integer getRoAvailable() {
+        return roAvailable;
+    }
+
+    public void setRoAvailable(Integer roAvailable) {
+        this.roAvailable = roAvailable;
+    }
+
     @Override
     public String toString() {
         return "OaTeamRole{" +
                 "roId=" + roId +
                 ", roName='" + roName + '\'' +
+                ", roAvailable=" + roAvailable +
                 '}';
     }
 }

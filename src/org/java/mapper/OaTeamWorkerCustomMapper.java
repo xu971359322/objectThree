@@ -1,8 +1,6 @@
 package org.java.mapper;
 
 import org.apache.ibatis.annotations.Param;
-import org.java.entity.OaTeamRole;
-import org.java.entity.OaTeamWorker;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,5 @@ public interface OaTeamWorkerCustomMapper{
      * @param username
      * @return
      */
-    OaTeamWorker loginInfo(@Param("username") String username,@Param("password")String password);
-
-    List<Map<String,Object>> one();
+    public List<Map<String,Object>> loginInfo(@Param("username") String username);/*,@Param("workerRole") Integer workerRole*/
 }
