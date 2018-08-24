@@ -5,7 +5,7 @@ import java.util.Date;
 public class OaTeamReport {
     private String reId;
 
-    private String reName;
+    private String reTitle;
 
     private Date reTime;
 
@@ -14,6 +14,8 @@ public class OaTeamReport {
     private Integer reStatus;
 
     private String woId;
+
+    private Double reMoney;
 
     private String reContent;
 
@@ -25,12 +27,12 @@ public class OaTeamReport {
         this.reId = reId == null ? null : reId.trim();
     }
 
-    public String getReName() {
-        return reName;
+    public String getReTitle() {
+        return reTitle;
     }
 
-    public void setReName(String reName) {
-        this.reName = reName == null ? null : reName.trim();
+    public void setReTitle(String reTitle) {
+        this.reTitle = reTitle == null ? null : reTitle.trim();
     }
 
     public Date getReTime() {
@@ -63,6 +65,14 @@ public class OaTeamReport {
 
     public void setWoId(String woId) {
         this.woId = woId == null ? null : woId.trim();
+    }
+
+    public Double getReMoney() {
+        return reMoney;
+    }
+
+    public void setReMoney(Double reMoney) {
+        this.reMoney = reMoney;
     }
 
     public String getReContent() {

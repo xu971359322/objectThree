@@ -3,18 +3,21 @@
 <mapper namespace="org.java.mapper.OaTeamReportMapperCustom" >
 
 
-  <select id="selLeaveById" resultMap="BaseResultMap">
-    SELECT  * FROM  oa_team_report where wo_id= #{id}
+  <select id="selReportById" resultMap="BaseResultMap">
+    SELECT  * FROM  oa_team_report where wo_id= #{id} ORDER BY re_time DESC
   </select>
+
+
 
   <resultMap id="BaseResultMap" type="org.java.entity.OaTeamReport" >
     <id column="re_id" property="reId" jdbcType="VARCHAR" />
-    <result column="re_name" property="reName" jdbcType="VARCHAR" />
+    <result column="re_title" property="reTitle" jdbcType="VARCHAR" />
     <result column="re_time" property="reTime" jdbcType="TIMESTAMP" />
     <result column="re_file" property="reFile" jdbcType="VARCHAR" />
     <result column="re_status" property="reStatus" jdbcType="INTEGER" />
     <result column="re_content" property="reContent" jdbcType="LONGVARCHAR" />
     <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="re_money" property="reMoney" jdbcType="DOUBLE" />
   </resultMap>
 
 </mapper>

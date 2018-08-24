@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body style="margin:0px">
-	<img style="position: absolute;left:0px;top:0px" src="${pageContext.request.contextPath }/showResources.action?processDefinitionId=${processDefinitionId}&type=png">
-	<div style="position: absolute;border:3px red solid;left:${x}px;top:${y}px;width:${width-2}px;height:${height-2}px"></div>
+	<img style="position: absolute;left:0px;top:0px" src="${pageContext.request.contextPath }/process/showResources.do?processDefinitionId=${processDefinitionId}&type=png">
+	<div style="position: absolute;border:2px red solid;left:${x}px;top:${y-2}px;width:${width-2}px;height:${height-2}px"></div>
+
+	<a onclick="history.go(-1)">返回上一级</a>
 </body>
 </html>

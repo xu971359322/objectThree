@@ -19,4 +19,13 @@ public interface OaTeamWorkerCustomMapper{
     List<Map<String,Object>> one();
 
     List<OaTeamWorker> userByDeptId(@Param("dept")Object[] dept);
+
+    //通过部门查询领导
+    public List<OaTeamWorker> selDeptManage(@Param("deptId")Integer deptId);
+
+    //通过身份查询人
+    public List<OaTeamWorker> selManageByIdenty(@Param("rid")Integer rid);
+
+    //通过部门查询员工
+    public List<OaTeamWorker> selDeptEmployee(@Param("deptId")Integer deptId);
 }

@@ -59,7 +59,7 @@ public class EmailController extends BaseController{
 
         String path = servletContext.getRealPath("file");
         //创建一个输入流，用于把文件读入到内存
-        InputStream in = new FileInputStream(path+fileName);
+        InputStream in = new FileInputStream(path+"\\"+fileName);
 
         //创建一个输出流，用于给请求做出响应-------------返回要下载的文件
         OutputStream out = response.getOutputStream();

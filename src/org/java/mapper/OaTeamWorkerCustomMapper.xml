@@ -16,7 +16,19 @@
         <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
         <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
     </resultMap>
+    
+    <select id="selManageByIdenty" resultMap="BaseResultMap">
+        select * FROM oa_team_worker where wo_role =#{rid}
+    </select>
 
+    <select id="selDeptManage" resultMap="BaseResultMap">
+        SELECT * FROM oa_team_worker WHERE wo_deptId =#{deptId} AND wo_role =4
+    </select>
+
+    <select id="selDeptEmployee" resultMap="BaseResultMap">
+        SELECT * FROM oa_team_worker WHERE wo_deptId =#{deptId} AND wo_role =5
+    </select>
+    
     <select id="loginInfo" resultMap="BaseResultMap">
         select * from oa_team_worker where wo_loginName= #{username} and wo_loginPwd=#{password}
     </select>

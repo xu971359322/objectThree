@@ -118,7 +118,7 @@
 			<div class="main-content">
 				<div class="container-fluid">
 					<div class="panel">
-						<div class="panel-heading" style="height: 600px">
+						<div class="panel-heading" style="height: 800px">
 							<iframe name='right' src='xu/main.jsp' frameborder='0' style='width:100%;height:100%'></iframe>
 
 						</div>

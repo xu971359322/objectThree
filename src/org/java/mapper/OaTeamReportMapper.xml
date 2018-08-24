@@ -3,17 +3,18 @@
 <mapper namespace="org.java.mapper.OaTeamReportMapper" >
   <resultMap id="BaseResultMap" type="org.java.entity.OaTeamReport" >
     <id column="re_id" property="reId" jdbcType="VARCHAR" />
-    <result column="re_name" property="reName" jdbcType="VARCHAR" />
+    <result column="re_title" property="reTitle" jdbcType="VARCHAR" />
     <result column="re_time" property="reTime" jdbcType="TIMESTAMP" />
     <result column="re_file" property="reFile" jdbcType="VARCHAR" />
     <result column="re_status" property="reStatus" jdbcType="INTEGER" />
     <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="re_money" property="reMoney" jdbcType="DOUBLE" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="org.java.entity.OaTeamReport" extends="BaseResultMap" >
     <result column="re_content" property="reContent" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    re_id, re_name, re_time, re_file, re_status, wo_id
+    re_id, re_title, re_time, re_file, re_status, wo_id, re_money
   </sql>
   <sql id="Blob_Column_List" >
     re_content
@@ -31,12 +32,12 @@
     where re_id = #{reId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="org.java.entity.OaTeamReport" >
-    insert into oa_team_report (re_id, re_name, re_time, 
+    insert into oa_team_report (re_id, re_title, re_time, 
       re_file, re_status, wo_id, 
-      re_content)
-    values (#{reId,jdbcType=VARCHAR}, #{reName,jdbcType=VARCHAR}, #{reTime,jdbcType=TIMESTAMP}, 
+      re_money, re_content)
+    values (#{reId,jdbcType=VARCHAR}, #{reTitle,jdbcType=VARCHAR}, #{reTime,jdbcType=TIMESTAMP}, 
       #{reFile,jdbcType=VARCHAR}, #{reStatus,jdbcType=INTEGER}, #{woId,jdbcType=VARCHAR}, 
-      #{reContent,jdbcType=LONGVARCHAR})
+      #{reMoney,jdbcType=DOUBLE}, #{reContent,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.OaTeamReport" >
     insert into oa_team_report
@@ -44,8 +45,8 @@
       <if test="reId != null" >
         re_id,
       </if>
-      <if test="reName != null" >
-        re_name,
+      <if test="reTitle != null" >
+        re_title,
       </if>
       <if test="reTime != null" >
         re_time,
@@ -59,6 +60,9 @@
       <if test="woId != null" >
         wo_id,
       </if>
+      <if test="reMoney != null" >
+        re_money,
+      </if>
       <if test="reContent != null" >
         re_content,
       </if>
@@ -67,8 +71,8 @@
       <if test="reId != null" >
         #{reId,jdbcType=VARCHAR},
       </if>
-      <if test="reName != null" >
-        #{reName,jdbcType=VARCHAR},
+      <if test="reTitle != null" >
+        #{reTitle,jdbcType=VARCHAR},
       </if>
       <if test="reTime != null" >
         #{reTime,jdbcType=TIMESTAMP},
@@ -82,6 +86,9 @@
       <if test="woId != null" >
         #{woId,jdbcType=VARCHAR},
       </if>
+      <if test="reMoney != null" >
+        #{reMoney,jdbcType=DOUBLE},
+      </if>
       <if test="reContent != null" >
         #{reContent,jdbcType=LONGVARCHAR},
       </if>
@@ -90,8 +97,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamReport" >
     update oa_team_report
     <set >
-      <if test="reName != null" >
-        re_name = #{reName,jdbcType=VARCHAR},
+      <if test="reTitle != null" >
+        re_title = #{reTitle,jdbcType=VARCHAR},
       </if>
       <if test="reTime != null" >
         re_time = #{reTime,jdbcType=TIMESTAMP},
@@ -105,6 +112,9 @@
       <if test="woId != null" >
         wo_id = #{woId,jdbcType=VARCHAR},
       </if>
+      <if test="reMoney != null" >
+        re_money = #{reMoney,jdbcType=DOUBLE},
+      </if>
       <if test="reContent != null" >
         re_content = #{reContent,jdbcType=LONGVARCHAR},
       </if>
@@ -113,21 +123,23 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.java.entity.OaTeamReport" >
     update oa_team_report
-    set re_name = #{reName,jdbcType=VARCHAR},
+    set re_title = #{reTitle,jdbcType=VARCHAR},
       re_time = #{reTime,jdbcType=TIMESTAMP},
       re_file = #{reFile,jdbcType=VARCHAR},
       re_status = #{reStatus,jdbcType=INTEGER},
       wo_id = #{woId,jdbcType=VARCHAR},
+      re_money = #{reMoney,jdbcType=DOUBLE},
       re_content = #{reContent,jdbcType=LONGVARCHAR}
     where re_id = #{reId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamReport" >
     update oa_team_report
-    set re_name = #{reName,jdbcType=VARCHAR},
+    set re_title = #{reTitle,jdbcType=VARCHAR},
       re_time = #{reTime,jdbcType=TIMESTAMP},
       re_file = #{reFile,jdbcType=VARCHAR},
       re_status = #{reStatus,jdbcType=INTEGER},
-      wo_id = #{woId,jdbcType=VARCHAR}
+      wo_id = #{woId,jdbcType=VARCHAR},
+      re_money = #{reMoney,jdbcType=DOUBLE}
     where re_id = #{reId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface OaTeamReportMapperCustom {
 
-    public List<OaTeamReport> selLeaveById(@Param("id") String woId);
+    public List<OaTeamReport> selReportById(@Param("id") String woId);
 
 }
