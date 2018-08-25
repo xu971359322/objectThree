@@ -93,7 +93,7 @@
 					<ul class="nav">
 						<li><a href="main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
 						<li><a href="email.jsp" class=""> <i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
-						<li><a href="office.jsp" class=""> <i class="lnr lnr-chart-bars"></i> <span>公文管理</span></a></li>
+						<li><a href="office.jsp" class=""> <i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
 						<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
 						<li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>公司论坛</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">

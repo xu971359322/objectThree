@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.MeetingMapper" >
+
+
+
+
+    <update id="updateinform">
+
+       UPDATE oa_inform o SET o.email=#{email} ,o.phone=#{phone}  WHERE o.i_id=#{iid}
+
+    </update>
+
+    <update id="addinform">
+         INSERT  INTO  oa_inform VALUES(NULL,0,0,#{id});
+
+    </update>
+
+    <update id="addonemeetingroom">
+
+         INSERT INTO oa_mettingplace VALUES(NULL,#{title},#{content},#{people},#{place},#{facility});
+
+    </update>
+    <update id="updateonemettingroom">
+
+           UPDATE oa_mettingplace o  SET o.mp_content= #{content}  ,o.mp_facility=#{facility} ,o.mp_people= #{people}  ,o.mp_place=#{place}  ,o.mp_title= #{title}  where o.mp_id=#{id}
+    </update>
+
+    <select id="showonemeetingroom" resultType="java.util.HashMap">
+
+        SELECT o.mp_id id,o.mp_title title,o.mp_content content,o.mp_facility facility,o.mp_people people,o.mp_place place FROM oa_mettingplace o WHERE o.mp_id=#{id}
+
+    </select>
+
+
+    <select id="seleallmeetingroom" resultType="java.util.HashMap">
+
+    SELECT o.mp_id id,o.mp_title title,o.mp_content content,o.mp_facility facility,o.mp_people people,o.mp_place place FROM oa_mettingplace o
+
+    </select>
+
+    <update id="deletemetting">
+
+               DELETE   FROM oa_meeting WHERE  m_id=#{id}
+
+    </update>
+
+
+    <select id="noratify" resultType="java.util.HashMap">
+
+         SELECT r.m_id id,r.m_title title,r.m_begintime begintime,
+         r.e_endtime endtime,o.mp_title mptitle,(SELECT COUNT(*) FROM oa_mettinguser WHERE m_id=r.m_id) number ,r.m_remark remark
+         FROM oa_meeting r ,oa_mettingplace o
+         WHERE  r.m_state=3 AND o.mp_id=r.mp_id ;
+
+
+    </select>
+
+
+
+    <select id="selephone" resultType="java.util.HashMap">
+
+       SELECT z.wo_email email,z.wo_phone phone FROM oa_team_worker z WHERE
+       z.wo_id IN(SELECT wo_id FROM oa_mettinguser WHERE m_id=#{id});
+
+    </select>
+
+    <select id="seleratifymeeting" resultType="java.util.HashMap">
+        SELECT r.m_id id,r.m_title title,r.m_begintime begintime,
+        r.e_endtime endtime,o.mp_title mptitle,(SELECT COUNT(*) FROM oa_mettinguser WHERE m_id=r.m_id) number ,i.email email,i.phone phone,i.i_id iid
+         FROM oa_meeting r ,oa_mettingplace o,oa_inform i
+         WHERE  r.m_state=1 AND o.mp_id=r.mp_id  AND i.m_id=r.m_id AND  r.e_endtime>NOW();
+
+    </select>
+
+    <update id="updatemeeting">
+        UPDATE oa_meeting o  SET  o.m_state=#{typee},o.colorInfo=#{typee},o.m_remark=#{comment} WHERE o.m_id=#{id}
+
+    </update>
+
+<select id="seleapproval" resultType="java.util.HashMap">
+
+    SELECT r.m_id id,r.m_title title,r.m_begintime begintime, r.e_endtime endtime,o.mp_title mptitle FROM oa_meeting r ,oa_mettingplace o WHERE  r.m_state=0 AND o.mp_id=r.mp_id
+</select>
+
+    <select id="selemeeting" resultType="java.util.HashMap">
+        SELECT r.m_id id,r.m_title title,r.m_begintime begintime, r.e_endtime endtime,o.mp_title mptitle,r.m_type `type`
+,(SELECT COUNT(*) FROM oa_mettinguser WHERE m_id=r.m_id) number,
+o.mp_place place,i.i_id iid
+
+ FROM oa_meeting r ,oa_mettingplace o ,oa_inform i WHERE  i.m_id=r.m_id AND  o.mp_id=r.mp_id  AND r.m_id=#{id}
+
+    </select>
+
+    <select id="selemeeting22" resultType="java.util.HashMap">
+        SELECT r.m_id id,r.m_title title,r.m_begintime begintime, r.e_endtime endtime,o.mp_title mptitle,r.m_type `type`
+        ,(SELECT COUNT(*) FROM oa_mettinguser WHERE m_id=r.m_id) number,
+        o.mp_place place
+
+        FROM oa_meeting r ,oa_mettingplace o  WHERE   o.mp_id=r.mp_id  AND r.m_id=#{id}
+
+    </select>
+
+</mapper>

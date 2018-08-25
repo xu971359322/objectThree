@@ -36,8 +36,7 @@ public class UserController extends BaseController {
         List<Map<String,Object>> menus = (List<Map<String, Object>>) user.get("menus");
         System.out.println(menus.size()+">>>>>>>>>>>");
         model.addAttribute("menus",menus);*/
-        System.out.println("1111111111111111111111122222222222222222222222222222222222333333333333333333333333333333333");
-        return "/main";
+         return "/main";
     }
 
 
@@ -54,7 +53,6 @@ public class UserController extends BaseController {
             } else if (msg.equals("org.apache.shiro.authc.IncorrectCredentialsException")) {
                 throw new Exception("密码错误");
             } else {
-                System.out.println(msg);
                 throw new Exception("产生了其他的异常");
             }
         }

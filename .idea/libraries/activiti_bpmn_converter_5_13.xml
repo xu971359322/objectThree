@@ -61,8 +61,12 @@
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-tx-4.2.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-web-4.2.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/spring-webmvc-4.2.4.RELEASE.jar!/" />
+      <root url="file://D:/lib2" />
+      <root url="file://D:/lib3" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://D:/lib2" recursive="false" />
+    <jarDirectory url="file://D:/lib3" recursive="false" />
   </library>
 </component>

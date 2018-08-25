@@ -7,4 +7,5 @@
     <typeAliases>
         <package name="org.java.entity"/>
     </typeAliases>
+
 </configuration>
