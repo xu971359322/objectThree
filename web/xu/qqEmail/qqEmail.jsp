@@ -37,6 +37,9 @@
             <td>${l.title}</td>
             <td>${l.sendName}</td>
             <td>${l.time}<%--<fmt:formatDate value="${l.time}" pattern="yyyy-MM-dd hh:mm:ss"/>--%></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/qq/detailEmail.do?id=${l.id}">详情</a>
+            </td>
          </tr>
 
     </c:forEach>

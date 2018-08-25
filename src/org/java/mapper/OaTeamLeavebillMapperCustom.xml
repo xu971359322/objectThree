@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamLeavebillMapperCustom" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamLeavebill" >
+    <id column="lb_id" property="lbId" jdbcType="VARCHAR" />
+    <result column="lb_days" property="lbDays" jdbcType="INTEGER" />
+    <result column="lb_content" property="lbContent" jdbcType="VARCHAR" />
+    <result column="lb_remark" property="lbRemark" jdbcType="VARCHAR" />
+    <result column="lb_time" property="lbTime" jdbcType="TIMESTAMP" />
+    <result column="lb_status" property="lbStatus" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="selLeaveById" resultMap="BaseResultMap">
+    select * from oa_team_leavebill where wo_id =#{id}
+  </select>
+</mapper>

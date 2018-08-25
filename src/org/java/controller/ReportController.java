@@ -33,6 +33,7 @@ public class ReportController extends BaseController {
     @Autowired
     private OaTeamWorkerCustomMapper oaTeamWorkerCustomMapper;
 
+    //查看历史comment
     @RequestMapping("hisComment")
     public String hisComment(String id){
         List<Comment> list = reportService.hisComment(id);

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamLeavebillMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaTeamLeavebill" >
+    <id column="lb_id" property="lbId" jdbcType="VARCHAR" />
+    <result column="lb_days" property="lbDays" jdbcType="INTEGER" />
+    <result column="lb_content" property="lbContent" jdbcType="VARCHAR" />
+    <result column="lb_remark" property="lbRemark" jdbcType="VARCHAR" />
+    <result column="lb_time" property="lbTime" jdbcType="TIMESTAMP" />
+    <result column="lb_status" property="lbStatus" jdbcType="INTEGER" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lb_id, lb_days, lb_content, lb_remark, lb_time, lb_status, wo_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_team_leavebill
+    where lb_id = #{lbId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from oa_team_leavebill
+    where lb_id = #{lbId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.java.entity.OaTeamLeavebill" >
+    insert into oa_team_leavebill (lb_id, lb_days, lb_content, 
+      lb_remark, lb_time, lb_status, 
+      wo_id)
+    values (#{lbId,jdbcType=VARCHAR}, #{lbDays,jdbcType=INTEGER}, #{lbContent,jdbcType=VARCHAR}, 
+      #{lbRemark,jdbcType=VARCHAR}, #{lbTime,jdbcType=TIMESTAMP}, #{lbStatus,jdbcType=INTEGER}, 
+      #{woId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.java.entity.OaTeamLeavebill" >
+    insert into oa_team_leavebill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lbId != null" >
+        lb_id,
+      </if>
+      <if test="lbDays != null" >
+        lb_days,
+      </if>
+      <if test="lbContent != null" >
+        lb_content,
+      </if>
+      <if test="lbRemark != null" >
+        lb_remark,
+      </if>
+      <if test="lbTime != null" >
+        lb_time,
+      </if>
+      <if test="lbStatus != null" >
+        lb_status,
+      </if>
+      <if test="woId != null" >
+        wo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lbId != null" >
+        #{lbId,jdbcType=VARCHAR},
+      </if>
+      <if test="lbDays != null" >
+        #{lbDays,jdbcType=INTEGER},
+      </if>
+      <if test="lbContent != null" >
+        #{lbContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lbRemark != null" >
+        #{lbRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="lbTime != null" >
+        #{lbTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lbStatus != null" >
+        #{lbStatus,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        #{woId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.java.entity.OaTeamLeavebill" >
+    update oa_team_leavebill
+    <set >
+      <if test="lbDays != null" >
+        lb_days = #{lbDays,jdbcType=INTEGER},
+      </if>
+      <if test="lbContent != null" >
+        lb_content = #{lbContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lbRemark != null" >
+        lb_remark = #{lbRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="lbTime != null" >
+        lb_time = #{lbTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lbStatus != null" >
+        lb_status = #{lbStatus,jdbcType=INTEGER},
+      </if>
+      <if test="woId != null" >
+        wo_id = #{woId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lb_id = #{lbId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamLeavebill" >
+    update oa_team_leavebill
+    set lb_days = #{lbDays,jdbcType=INTEGER},
+      lb_content = #{lbContent,jdbcType=VARCHAR},
+      lb_remark = #{lbRemark,jdbcType=VARCHAR},
+      lb_time = #{lbTime,jdbcType=TIMESTAMP},
+      lb_status = #{lbStatus,jdbcType=INTEGER},
+      wo_id = #{woId,jdbcType=VARCHAR}
+    where lb_id = #{lbId,jdbcType=VARCHAR}
+  </update>
+</mapper>

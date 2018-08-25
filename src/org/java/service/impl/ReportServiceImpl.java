@@ -249,8 +249,16 @@ public class ReportServiceImpl implements ReportService {
                 .taskAssignee(name)
                 .orderByTaskCreateTime().asc()
                 .list();
+        List<Task> list2 = new ArrayList<>();
+        for (Task task : list) {
+            String processDefinitionId = task.getProcessDefinitionId();
+            String aaa= processDefinitionId.substring(0,processDefinitionId.indexOf(":"));
+            if(aaa.equals("report")){
+                list2.add(task);
+            }
 
-        return list;
+        }
+        return list2;
     }
 
     @Override

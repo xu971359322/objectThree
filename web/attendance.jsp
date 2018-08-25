@@ -82,7 +82,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png"
                                                                                         class="img-circle" alt="Avatar">
-                            <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <span>${worker.woName}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
                             <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -103,17 +103,20 @@
         <div class="sidebar-scroll">
             <nav>
                 <ul class="nav">
-                    <li><a href="main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
-                    <li><a href="email.jsp" class=""> <i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
-                    <li><a href="office.jsp" class=""> <i class="lnr lnr-chart-bars"></i> <span>公文管理</span></a></li>
-                    <li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
-                    <li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/email.jsp" class=""> <i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/office.jsp" class=""> <i class="lnr lnr-chart-bars"></i> <span>公文管理</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
                     <li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>考勤管理</span><i class="icon-submenu lnr lnr-chevron-left"></i> </a>
                         <div id="subPages" class="collapse ">
                             <ul class="nav">
                                 <li><a href="page-profile.html" class="">部门管理</a></li>
                                 <li><a href="page-login.html" class="">查询员工</a></li>
                                 <li><a href="page-lockscreen.html" class="">增加员工</a></li>
+                                <li><a  href="${pageContext.request.contextPath }/leave/queryProcessInstance.do" target="right" class="">我的请假单</a></li>
+                                <li><a  href="${pageContext.request.contextPath }/leave/findTaskByName.do" target="right" class="">请假单审批</a></li>
+                                <li><a  href="${pageContext.request.contextPath }/leave/queryGroupTask.do" target="right" class="">可办理请假单</a></li>
                             </ul>
                         </div>
                     </li>
@@ -126,131 +129,9 @@
     <div class="main">
         <!-- MAIN CONTENT -->
         <div class="main-content">
-            <div class="container-fluid">
-                <h3 class="page-title">Panels</h3>
-                <div class="row">
-                    <div class="col-md-8">
-                        <!-- PANEL HEADLINE -->
-                        <div class="panel panel-headline">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel Headline</h3>
-                                <p class="panel-subtitle">Panel to display most important information</p>
-                            </div>
-                            <div class="panel-body">
-                                <h4>Panel Content</h4>
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                            </div>
-                        </div>
-                        <!-- END PANEL HEADLINE -->
-                    </div>
-                    <div class="col-md-4">
-                        <!-- PANEL NO PADDING -->
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel No Padding</h3>
-                                <div class="right">
-                                    <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i>
-                                    </button>
-                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                                </div>
-                            </div>
-                            <div class="panel-body no-padding bg-primary text-center">
-                                <div class="padding-top-30 padding-bottom-30">
-                                    <i class="fa fa-thumbs-o-up fa-5x"></i>
-                                    <h3>No Content Padding</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END PANEL NO PADDING -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- PANEL DEFAULT -->
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel Default</h3>
-                                <div class="right">
-                                    <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i>
-                                    </button>
-                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                            </div>
-                        </div>
-                        <!-- END PANEL DEFAULT -->
-                    </div>
-                    <div class="col-md-4">
-                        <!-- PANEL NO CONTROLS -->
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel No Right Controls</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                            </div>
-                        </div>
-                        <!-- END PANEL NO CONTROLS -->
-                    </div>
-                    <div class="col-md-4">
-                        <!-- PANEL WITH FOOTER -->
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel With Footer</h3>
-                                <div class="right">
-                                    <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i>
-                                    </button>
-                                    <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded
-                                    array.</p>
-                            </div>
-                            <div class="panel-footer">
-                                <h5>Panel Footer</h5>
-                            </div>
-                        </div>
-                        <!-- END PANEL WITH FOOTER -->
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- PANEL SCROLLING -->
-                        <div id="panel-scrolling-demo" class="panel">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Panel Scrolling</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                                <p>Objectively network visionary methodologies via best-of-breed users.
-                                    Phosfluorescently initiate go forward leadership skills before an expanded array of
-                                    infomediaries. Monotonectally incubate web-enabled communities rather than
-                                    process-centric.</p>
-                            </div>
-                        </div>
-                        <!-- END PANEL SCROLLING -->
-                    </div>
-                </div>
+            <div class="panel-heading" style="height: 800px">
+                <iframe name='right' src='xu/main.jsp' frameborder='0' style='width:100%;height:100%'></iframe>
+
             </div>
         </div>
         <!-- END MAIN CONTENT -->
