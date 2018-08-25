@@ -98,8 +98,16 @@
 								<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>资源管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 								<div id="subPages" class="collapse ">
 									<ul class="nav" id="menuSideBar">
+										<li mid="tab1" funurl="${pageContext.request.contextPath}/resou/resouAll.do"><a tabindex="-1" href="javascript:void(0);">公司所有文档</a></li>
 
-										<li mid="tab1" funurl="${pageContext.request.contextPath}/resource/word.jsp"><a tabindex="-1" href="javascript:void(0);">文档</a></li>
+										<li mid="tab2" funurl="${pageContext.request.contextPath}/resou/selShowAll.do"><a tabindex="-1" href="javascript:void(0);">私密文档</a></li>
+
+										<li mid="tab3" funurl="${pageContext.request.contextPath}/resou/myWord.do"><a tabindex="-1" href="javascript:void(0);">我的文档</a></li>
+
+										<li mid="tab4" funurl="${pageContext.request.contextPath}/resou/Load.do"><a tabindex="-1" href="javascript:void(0);">文档上传</a></li>
+
+										<li mid="tab5" funurl="${pageContext.request.contextPath}/resou/dustbin.do"><a tabindex="-1" href="javascript:void(0);">文档回收站</a></li>
+
 									</ul>
 								</div>
 							</li>
