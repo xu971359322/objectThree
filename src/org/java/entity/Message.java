@@ -16,6 +16,15 @@ public class Message implements Serializable{
 	private String time;
 	private String personName;
 	private Boolean flag;
+	private Boolean other;
+
+	public Boolean getOther() {
+		return other;
+	}
+
+	public void setOther(Boolean other) {
+		this.other = other;
+	}
 
 	public Boolean getFlag() {
 		return flag;

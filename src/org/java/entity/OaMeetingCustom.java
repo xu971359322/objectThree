@@ -9,6 +9,15 @@ public class OaMeetingCustom extends OaMeeting implements Serializable {//扩展
     private String startTime;
     private String endTime;
     private String mremark;
+    private Integer mType;
+
+    public Integer getmType() {
+        return mType;
+    }
+
+    public void setmType(Integer mType) {
+        this.mType = mType;
+    }
 
     public String getMremark() {
         return mremark;

@@ -15,9 +15,9 @@
 <div class="login-form">
 	<div class="close"><span style="color:lightyellow;font-size:21px;margin: 0px 30px">Login</span></div>
 	<div class="head-info">
-		<label class="lbl-1"> </label>
-		<label class="lbl-2"> </label>
-		<label class="lbl-3"> </label>
+		<label class="lbl-1"></label>
+		<label class="lbl-2"></label>
+		<label class="lbl-3"></label>
 	</div>
 	<div class="clear"> </div>
 	<div class="avtar">

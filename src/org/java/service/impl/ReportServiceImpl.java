@@ -43,9 +43,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<OaTeamReport> selReportById(String woId) {
-        return  oaTeamReportMapperCustom.selLeaveById(woId);
-    }
+    public List<OaTeamReport> selReportById(String woId) { return  oaTeamReportMapperCustom.selLeaveById(woId);  }
 
     @Override
     public void addReport(OaTeamReport oaTeamReport) {

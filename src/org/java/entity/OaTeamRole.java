@@ -9,6 +9,16 @@ public class OaTeamRole implements Serializable{
 
     private Integer roAvailable;
 
+    private String roRemark;
+
+    public String getRoRemark() {
+        return roRemark;
+    }
+
+    public void setRoRemark(String roRemark) {
+        this.roRemark = roRemark;
+    }
+
     public Integer getRoId() {
         return roId;
     }

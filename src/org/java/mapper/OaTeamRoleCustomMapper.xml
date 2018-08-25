@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaTeamRoleCustomMapper" >
+    <resultMap id="BaseResultMap" type="org.java.entity.OaTeamRole" >
+      <id column="ro_id" property="roId" jdbcType="INTEGER" />
+      <result column="ro_name" property="roName" jdbcType="VARCHAR" />
+      <result column="ro_available" property="roAvailable" jdbcType="INTEGER" />
+      <result column="ro_remark" property="roRemark"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+      ro_id, ro_name, ro_available,ro_remark
+    </sql>
+
+    <insert id="insert" parameterType="java.util.HashMap">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="ro_id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+      insert into oa_team_role (ro_id, ro_name, ro_available,ro_remark) values (null, #{roleName},#{roleAvailable},#{roleRemark})
+    </insert>
+
+    <insert id="addPermission" parameterType="java.util.HashMap">
+        insert into oa_role_permission (`id`,`role_id`,`permission_id`) values (null,#{ro_id},#{permission_id})
+<!--        <foreach collection="per" item="info" separator=",">
+
+        </foreach>-->
+    </insert>
+
+    <select id="getTeamRoleListBycondition" resultType="java.util.HashMap">
+        SELECT * FROM oa_team_permission
+    </select>
+</mapper>

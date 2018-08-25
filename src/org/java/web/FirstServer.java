@@ -41,6 +41,8 @@ public class FirstServer{
 		Message message=new Message();
 		message.setMsg(info);
 		message.setName(nameList);
+		message.setFlag(true);
+		message.setOther(false);
 		
 		sendMsg(list,message.toJson());
 	}
@@ -85,10 +87,12 @@ public class FirstServer{
 			message.setPersonName(name);
 			message.setContent(info.getMsg());
 			message.setTime(DATE_FORMAT.format(new Date()));
-			for (Session openSession : list) {
+			message.setFlag(true);
+			message.setOther(false);
+			/*for (Session openSession : list) {
 				//message.setSelf(openSession.equals(session));
 				message.setFlag(openSession.equals(session));
-			}
+			}*/
 			sendMsg(list,message.toJson());
 		}else{
 			String user=info.getToUser();

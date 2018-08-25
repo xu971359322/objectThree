@@ -30,7 +30,7 @@
 	<!-- 配置安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="customRealm"/>
-<!--		<property name="cacheManager" ref="ehcaceh"/>-->
+		<property name="cacheManager" ref="ehcaceh"/>
 	</bean>
 	
 	<!-- 注册Realm -->
@@ -48,12 +48,9 @@
 	<!-- 配置异常处理器 -->
 	<bean class="org.java.exception.ExceptionHandler"/>
 
-<!--
-	&lt;!&ndash; ehcache &ndash;&gt;
+	<!-- ehcache -->
 	<bean id="ehcaceh" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-		&lt;!&ndash; 指定shiro的 shiro-ehcache.xml文件的路径&ndash;&gt;
-		<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+		<!-- 指定shiro的 shiro-ehcache.xml文件的路径-->
+		<property name="cacheManagerConfigFile" value="classpath:spring/shiro-ehcache.xml"/>
 	</bean>
-	-->
-
 </beans>

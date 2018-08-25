@@ -137,8 +137,8 @@
                         var messageItem = '<li class="am-comment '
                             + (t.flag ? 'am-comment-flip' : 'am-comment')
                             + '">'
-                            + '<a href="javascript:void(0)" ><img src="assets/i/'
-                            + (t.flag ? 'app-icon72x72@2x.png' : 'app-icon72x72@2x.png')
+                            + '<a href="javascript:void(0)" ><img src="${pageContext.request.contextPath}/pjsp/assets/i/'
+                            + (t.flag ? 'app-icon72x72@2x.png' : 'favicon.png')
                             + '" alt="" class="am-comment-avatar" width="48" height="48"/></a>'
                             + '<div class="am-comment-main"><header class="am-comment-hd"><div class="am-comment-meta">'
                             + '<a href="javascript:void(0)" class="am-comment-author">'

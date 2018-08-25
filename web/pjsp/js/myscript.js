@@ -1,9 +1,3 @@
-/**
- * 链接数据库
- * @param url 连接地址
- * @param data 传入参数
- * @param method 回调方法
- */
 var getAjaxFun = function (url, data, method) {
     $.ajax({
         async: false,
@@ -12,11 +6,10 @@ var getAjaxFun = function (url, data, method) {
         dataType: "json",
         url: url,
         data: data,
-        success: function (data){//请求成功
+        success: function (data){
             method(data);
         },
-        // 请求的action路径
-        error: function () {// 请求失败处理函数
+        error: function () {
             Lobibox.alert('error', {
                 msg: "请求失败！"
             });
@@ -28,7 +21,7 @@ var getAjaxFun = function (url, data, method) {
     //日历初始化
     function calendarInit() {
         calendar = $('#calendar').fullCalendar({
-            firstDay: 1,//每周开始的日期：0为周日
+/*            firstDay: 1,//每周开始的日期：0为周日
             isRTL: false,//是否从右至左组织日历
             weekends: true,//是否显示周末
             defaultView: 'month',//初始化时的默认视图，month、agendaWeek、agendaDay
@@ -59,7 +52,39 @@ var getAjaxFun = function (url, data, method) {
                 month: '月',
                 week: '周',
                 day: '日'
+            },*/
+            defaultView:"month",            // year, month, date: 整数, 初始化加载时的日期，默认是month
+            height:740,                    // 日历高度,包括表头   contentHeight: 600 内容高度，不包括表头
+            editable: true,                 // 默认值false, 用来设置日历中的日程是否可以编辑
+            draggable: true,                // 是否可拖动
+            weekends: true,                 // 默认为true, 标识是否显示周六和周日的列
+            slotMinutes:30,                 // 整型, 默认值30, 表示在agenda的views中, 两个时间之间的间隔
+            disableDragging:false,          // Boolean类型, 默认false, 所有的event可以拖动, 必须editable = true
+            diableResizing:false,           // Boolean, 默认false, 所有的event可以改变大小, 必须editable = true
+            dragRevertDuration:500,         // 拖动恢复的时间, 默认500毫秒, 表示一个不成功的拖动之后, 控件回复到原始位置的时间.
+            dragOpacity:.5,                 // Float类型, 表示拖动时候的不透明度.
+            monthNames:['一月','二月', '三月', '四月', '五月', '六月', '七月','八月', '九月', '十月', '十一月', '十二月'], //默认为英文月分，这里可以改成中文
+            dayNames:['星期日', '星期一', '星期二', '星期三','星期四', '星期五', '星期六'],  //换成中文星期
+            header:{
+                left:   'month,agendaWeek,agendaDay',  //左边显示的按钮 (month,basicWeek无时间格式,basicDay无时间格式,agendaWeek,agendaDay)
+                center: 'title',        //中间显示标题
+                right:  'prevYear,prev,today,next,nextYear'  //右边显示的按钮
             },
+            buttonText:{                    //按钮对应的文本
+                prevYear: '去年',         //不建议改这个值，因为它本身是含[去年、上一周、前天]三个意思，你就让它默认
+                nextYear: '明年',         //同上
+                today:    '今天',
+                month:    '月',
+                week:     '周',
+                day:      '日'
+            },
+            dayNamesShort:['周日', '周一', '周二', '周三','周四', '周五', '周六'],  //短格式的星期
+            titleFormat:{                   //格式化标题
+                month: 'MMMM yyyy',                             // 如：September 2009
+                week: "MMM d[yyyy]{'&#8212;'[ MMM] d yyyy}",    // 如：Sep 7 - 13 2009
+                day: 'dddd, MMM d, yyyy'                        // 如：Tuesday, Sep 8, 2009
+            },
+           /* weekMode:'fixed',  */         //固定显示6周高
             editable: false,	//是否可拖拽
             droppable: true, 	//这允许事情被扔到日历上！！！
             selectable: true,	//是否选中对应元素
@@ -121,12 +146,12 @@ var getAjaxFun = function (url, data, method) {
     //添加，会议消息
     function calendearAdd(start, end, allDay) {
         var aa = queryCalendearByName(start, end, allDay);
-        if (aa != "") {
+/*        if (aa != "") {
             Lobibox.alert('success', {
                 msg: "一个用户一天只能添加4条日程",
             });
             return;
-        }
+        }*/
         document.getElementById("jd").click();
         clear();
         $("#onSubmit").click(function () {
@@ -134,7 +159,12 @@ var getAjaxFun = function (url, data, method) {
             var nTime = $("#nowTime").val();
             var endDate = $("#endDate").val();
             var endTime = $("#endTime").val();
-            if ($("#meetingName").val() != "") {
+            var checkBox=$("[name=idcheckBox]:checked");
+            var infoIds = '';
+            checkBox.each(function(){
+                infoIds +=$(this).parent().parent().attr("id")+ ',';
+            })
+           if ($("#meetingName").val() != "") {
                 calendar.fullCalendar('renderEvent',
                     {
                         title: $("#meetingName").val(),
@@ -156,34 +186,34 @@ var getAjaxFun = function (url, data, method) {
                 return;
             }
             calendar.fullCalendar('unselect');
-           $.ajax({
-                async: false,
-                cache: false,
-                type: 'POST',
-                dataType: "text",
-                data: {
-                    "meetingName": $("#meetingName").val(),
-                    "start":nDate+" "+nTime,
-                    "end":endDate+" "+endTime,
-                    "colorInfo":$("#mstate").val(),
-                    "meetingType":$("#meetingType").html(),
-                    "mpId":$("#mpId").val(),
-                    "allDay": allDay,
-                    "content":$("#content").val(),
-                    "remark":$("#remark").val(),
-                    "mstate":$("#mstate").val()
-                },
-                url: root + "/calendar/fullCalendarAdd.do",
-                //请求失败处理函数
-                error: function () {
-                    Lobibox.alert('error', {
-                        msg: "请求失败",
-                        callback: function ($this, type, ev) {
-                            window.location.reload();
-                        }
-                    });
-                }
-            });
+               $.ajax({
+                    async: false,
+                    cache: false,
+                    type: 'POST',
+                    dataType: "text",
+                    data: {
+                        "meetingName": $("#meetingName").val(),
+                        "start":nDate+" "+nTime,
+                        "end":endDate+" "+endTime,
+                        "colorInfo":$("#mstate").val(),
+                        "meetingType":$("#meetingType").val(),
+                        "mpId":$("#mpId").val(),
+                        "allDay": allDay,
+                        "content":$("#content").val(),
+                        "remark":$("#remark").val(),
+                        "mstate":$("#mstate").val(),
+                        "infoIds":infoIds
+                    },
+                    url: root + "/calendar/fullCalendarAdd.do",
+                    error: function () {
+                        Lobibox.alert('error', {
+                            msg: "请求失败",
+                            callback: function ($this, type, ev) {
+                                window.location.reload();
+                            }
+                        });
+                    }
+                });
         });
     }
 
@@ -277,7 +307,7 @@ var getAjaxFun = function (url, data, method) {
         });
     }*/
 
-    //添加之前查询  这个专家 当日 是否添加过日程
+    //添加之前查询
     function queryCalendearByName(start, end, allDay) {
         var judge;
         var fstart = $.fullCalendar.formatDate(start, "yyyy-MM-dd HH:mm:ss");
@@ -293,135 +323,126 @@ var getAjaxFun = function (url, data, method) {
 
     //修改
     function calendearSelectEdit(calEvent, jsEvent, view) {
-        var fstart = $.fullCalendar.formatDate(calEvent.start, "HH:mm");
-        var fend = $.fullCalendar.formatDate(calEvent.end, "HH:mm");
-        var start = $.fullCalendar.formatDate(calEvent.start, "yyyy-MM-dd HH:mm:ss");
-        var end = $.fullCalendar.formatDate(calEvent.end, "yyyy-MM-dd HH:mm:ss");
-        var str = "";
-        var reg = /[^:]*:([^:]*)/;
-        str = calEvent.title.replace(reg, "$1");
-        //截取冒号之前  取专家名字
-        var adminName = calEvent.title.substr(0, calEvent.title.indexOf(':'));
-        var form = $("<form class='form-inline'><lable>修改日程 </lable><div class='modal'></form>");
-        form.append("<textarea class='form-control input-focused' id='textarea' maxlength = '50' autocomplete=off placeholder='日程名称'>" + str + "</textarea><div id='messageEdit' style='color: red;'></div>");
-        form.append("时间段：");
-        form.append("<form class='form-inline'><label>" + fstart + "-" + fend + "  </label></form>");
-        if (calEvent.color == "green") {
-            form.append("<label class='blue'> <input name='colorEdit' value='1' checked type='radio' class='ace' /> <span class='lbl' style='color:green;font-weight:bold;'> 空闲  </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='2' type='radio' class='ace' /> <span class='lbl' style='color:gray;font-weight:bold;'> 锁定   </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='3' type='radio' class='ace' /> <span class='lbl' style='color:orange;font-weight:bold;'> 预订   </span> </label>");
-        } else if (calEvent.color == "gray") {
-            form.append("<label class='blue'> <input name='colorEdit' value='1' type='radio' class='ace' /> <span class='lbl' style='color:green;font-weight:bold;'> 空闲   </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='2' checked type='radio' class='ace' /> <span class='lbl' style='color:gray;font-weight:bold;'> 锁定   </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='3' type='radio' class='ace' /> <span class='lbl' style='color:orange;font-weight:bold;'> 预订   </span> </label>");
-        } else if (calEvent.color == "orange") {
-            form.append("<label class='blue'> <input name='colorEdit' value='1' type='radio' class='ace' /> <span class='lbl' style='color:green;font-weight:bold;'> 空闲   </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='2' type='radio' class='ace' /> <span class='lbl' style='color:gray;font-weight:bold;'> 锁定   </span> </label>");
-            form.append("<label class='blue'> <input name='colorEdit' value='3' checked type='radio' class='ace' /> <span class='lbl' style='color:orange;font-weight:bold;'> 预订   </span> </label>");
+        var checklist = document.getElementsByName("idcheckBoxNew");
+        for(var i=0;i<checklist.length;i++){
+            checklist[i].checked=false;
         }
-        form.append("<br/>");
-        form.append("<br/>");
-        var div = bootbox.dialog({
-            message: form,
-            buttons: {
-                "edit": {
-                    "label": "<i class='icon-ok'></i> 保存",
-                    "className": "btn btn-sm btn-success",
-                    "callback": function () {
-                        var val = $("#textarea").val();
-                        var color = $("input[name='colorEdit']:checked").val();
-                        if (val != "") {
-                            $.ajax({
-                                async: false,
-                                cache: false,
-                                type: "POST",
-                                dataType: "text",
-                                data: {
-                                    "id": calEvent.id,
-                                    "name": val,
-                                    "color": color,
-                                    "allDay": calEvent.allDay
-                                },
-                                url: root + "/expertOneselfClient/fullCalendarEdit",
-                                //请求的action路径
-                                error: function () { //请求失败处理函数
-                                    Lobibox.alert('error', {
-                                        msg: "请求失败"
-                                    });
-                                },
-                                success: function (data) {
-                                    if (data == "") {
-                                        Lobibox.alert('success', {
-                                            msg: "修改成功",
-                                            callback: function ($this, type, ev) {
-                                                window.location.reload();
-                                            }
-                                        });
-                                    }
-                                }
-                            });
-                            //calendar.fullCalendar('updateEvent', calEvent);
-                            div.modal("hide");
-                            return false;
-                        } else {
-                            $("#messageEdit").html("请输入日程");
-                            return false;
-                        }
-                    }
-                },
-                "delete": {
-                    "label": "<i class='icon-trash'></i> 删除",
-                    "className": "btn-sm btn-danger",
-                    "callback": function () {
-                        //截取冒号之前  取专家名字
-                        var adminName = calEvent.title.substr(0, calEvent.title.indexOf(':'));
-                        Lobibox.confirm({
-                            msg: "是否删除当天日程?",
-                            callback: function ($this, type, ev) {
-                                if (type == "yes") {
-                                    $.ajax({
-                                        async: false,
-                                        cache: false,
-                                        type: "POST",
-                                        dataType: "text",
-                                        data: {
-                                            "start": start,
-                                            "end": end,
-                                            "name": adminName
-                                        },
-                                        url: root + "/expertOneselfClient/fullCalendarDel",
-                                        //请求的action路径
-                                        error: function () { //请求失败处理函数
-                                            Lobibox.alert('error', {
-                                                msg: "请求失败"
-                                            });
-                                        },
-                                        success: function (data) {
-                                            if (data == "") {
-                                                Lobibox.alert('success', {
-                                                    msg: "删除成功",
-                                                    callback: function ($this, type, ev) {
-                                                        window.location.reload();
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    });
-                                    calendar.fullCalendar('removeEvents', function (ev) {
-                                        return (ev._id == calEvent._id);
-                                    })
+        document.getElementById("change").click();
+        $.ajax({
+            async: false,
+            cache: false,
+            type: "POST",
+            dataType: "json",
+            data: {
+                "mid": calEvent.id
+            },
+            url: root + "/calendar/fullCalendarEdit.do",
+            error: function () {
+                Lobibox.alert('error', {
+                    msg: "请求失败"
+                });
+            },
+            success: function (data) {
+                var time1=data.meeting.startTime.substring(0,10);
+                var detailtime1=data.meeting.startTime.substring(11,16);
+                var time2=data.meeting.endTime.substring(0,10);
+                var detailtime2=data.meeting.endTime.substring(11,16);
+                if (data!="") {
+                    var siteMap = eval(data.queryCalendearAllInfo);
+                    for (var j = 0; j < siteMap.length; j++) {
+                        $.each(siteMap[j], function (key, value) {
+                            for (var k = 0; k < checklist.length; k++) {
+                                if (siteMap[j].wo_id == checklist[k].value) {
+                                    checklist[k].checked = true;
                                 }
                             }
                         });
                     }
-                },
-                "close": {
-                    "label": "<i class='icon-remove'></i> 关闭",
-                    "className": "btn-sm"
+                    //$("#mpIdChange").find("option:contains('2')").attr("selected",true);
+                    $("#mIdInfomation").val(data.meeting.mId);
+                    $("#nowDateChange").val(time1);
+                    $("#nowTimeChange").val(detailtime1);
+                    $("#endDateChange").val(time2);
+                    $("#endTimeChange").val(detailtime2);
+                    $("#meetingNameChange").val(data.meeting.mTitle);
+                    $("#mstateChange").val(data.meeting.mstate);
+                    $("#meetingTypeChange").val(data.meeting.mType);
+                    $("#mpIdChange").val(data.meeting.mpId);
+                    $("#contentChange").val(data.meeting.mContent);
+                    $("#remarkChange").val(data.meeting.mremark);
                 }
+                //calendearDelete();
+                calendearUpdate();
             }
         });
+        //calendar.fullCalendar('updateEvent', calEvent);
     }
+
+    //删除会议人员
+    function calendearDelete() {
+/*            var checkBox=$("[name=idcheckBoxNew]:checked");
+            var infoIds = '';
+            checkBox.each(function(){
+                infoIds +=$(this).parent().parent().attr("id")+ ',';
+            })//未选中的checkbox传id值，*/
+            alert("11111111111111111111111111");
+
+    }
+
+    //修改会议消息
+    function calendearUpdate() {
+        $("#onSubmitChange").click(function (){
+            $.ajax({
+                async: false,
+                cache: false,
+                url: root + "/calendar/fullCalendarDetele.do",
+                type: 'POST',
+                dataType: "json",
+                data: {
+                    "mIdInfomation":$("#mIdInfomation").val()
+                },
+                success:function (data){
+
+                }
+            });
+            var nDate = $("#nowDateChange").val();
+            var nTime = $("#nowTimeChange").val();
+            var endDate = $("#endDateChange").val();
+            var endTime = $("#endTimeChange").val();
+            var checkBox=$("[name=idcheckBoxNew]:checked");
+            var infoIds = '';
+            checkBox.each(function(){
+                infoIds +=$(this).parent().parent().attr("id")+ ',';
+            })//未选中的checkbox传id值，
+            $.ajax({
+                async: false,
+                cache: false,
+                url: root + "/calendar/fullCalendarUpdate.do",
+                type: 'POST',
+                dataType: "text",
+                data: {
+                    "meetingNameChange": $("#meetingNameChange").val(),
+                    "startChange":nDate+" "+nTime,
+                    "endChange":endDate+" "+endTime,
+                    "colorInfoChange":$("#mstateChange").val(),
+                    "meetingTypeChange":$("#meetingTypeChange").val(),
+                    "mpIdChange":$("#mpIdChange").val(),
+                    "allDayChange":true,
+                    "contentChange":$("#contentChange").val(),
+                    "remarkChange":$("#remarkChange").val(),
+                    "mstateChange":$("#mstateChange").val(),
+                    "infoIdsChange":infoIds,
+                    "mIdInfomation":$("#mIdInfomation").val()
+                },
+                error: function () {
+                    window.location.reload();
+                },success:function (data) {
+                    window.location.reload();
+                }
+            });
+        });
+    }
+
 
 
     //鼠标放上去显示信息

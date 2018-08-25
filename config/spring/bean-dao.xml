@@ -45,6 +45,15 @@
     <!--事务管理器-->
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
+    <!-- shiro注解配置权限 -->
+    <!-- 配置aop -->
+    <aop:config proxy-target-class="true"/>
+
+    <!-- 启用shiro的注解 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
     <!-- 扫描的包 -->
     <context:component-scan base-package="org.java" />
 </beans>

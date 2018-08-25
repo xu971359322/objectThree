@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service("utilService")
 public class UtilServiceImpl implements UtilService{
@@ -32,12 +33,17 @@ public class UtilServiceImpl implements UtilService{
     }
 
     @Override
-    public List<OaMeetingCustom> getMeetingAll() {
+    public List<Map<String,Object>> getMeetingAll() {
         return oaMeetingCustomMapper.getMeetingAll();
     }
 
     @Override
     public List<OaTeamEmail> getEmailAll() {
         return oaTeamEmailMapperCustom.getEmailAll();
+    }
+
+    @Override
+    public List<Map<String, Object>> queryCalendearAllInfo(Integer mid) {
+        return oaMeetingCustomMapper.queryCalendearAllInfo(mid);
     }
 }

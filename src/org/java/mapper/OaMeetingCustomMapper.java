@@ -2,6 +2,7 @@ package org.java.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.java.entity.OaMeetingCustom;
+import org.java.entity.OaMettinguser;
 
 import java.util.List;
 import java.util.Map;
@@ -17,5 +18,13 @@ public interface OaMeetingCustomMapper {
 
     public OaMeetingCustom queryCalendearById(@Param("mid") Integer mid);
 
-    public List<OaMeetingCustom> getMeetingAll();
+    public List<Map<String,Object>> getMeetingAll();
+
+    public List<Map<String,Object>> queryCalendearAllInfo(@Param("mid") Integer mid);
+
+    public void updateMeetingInfo(Map<String,Object> map);
+
+    public Map<String,Object> selectInfoByMidAndWoId(@Param("mId") Integer mId,@Param("woId") String woId);
+
+    public void deleteInfoByMid(@Param("mId") Integer mId);
 }

@@ -13,11 +13,29 @@ public interface OaTeamWorkerCustomMapper{
      * @param username
      * @return
      */
-    public List<Map<String,Object>> loginInfo(@Param("username") String username);/*,@Param("workerRole") Integer workerRole*/
+    public List<Map<String,Object>> loginInfo(@Param("username") String username);
 
-    OaTeamWorker loginInfo(@Param("username") String username,@Param("password")String password);
+    /**
+     * 根据用户拥有的角色id，得到他所有的访问权限
+     * @param roleId
+     * @return
+     */
+    public List<Map<String,Object>> getMenus(@Param("roleId") Integer roleId);
 
-    List<Map<String,Object>> one();
+    /**
+     * 根据用户的id，得到该用户的所有访问权限
+     * @param userId
+     * @return
+     */
+    public List<String> getPermissions(@Param("userId") String userId);
+
+
+
+    public List<Map<String,Object>> getWorkerList();
+
+
+
+
 
     List<OaTeamWorker> userByDeptId(@Param("dept")Object[] dept);
 }

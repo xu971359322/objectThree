@@ -3,7 +3,7 @@ package org.java.controller;
 import org.activiti.engine.impl.bpmn.helper.ScopeUtil;
 import org.java.util.EmailList;
 import org.java.util.MailTest;
-/*import org.java.util.SendEmailUtil;*/
+import org.java.util.SendEmailUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,9 +80,9 @@ public class QQEmailController extends BaseController{
             System.out.println("people:"+s);
         }
         for (String s : arr) {
-            System.out.println("arr:"+s);
+            System.out.println("arr:" + s);
         }
-        //SendEmailUtil.sendSimpleMail(arr,content,title);
+        SendEmailUtil.sendSimpleMail(arr,content,title);
         request.setAttribute("err","发送成功");
         return "/xu/qqEmail";
     }
@@ -103,5 +103,4 @@ public class QQEmailController extends BaseController{
     public String toString() {
         return super.toString();
     }
-
 }

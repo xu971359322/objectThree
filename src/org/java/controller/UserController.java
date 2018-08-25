@@ -3,7 +3,9 @@ package org.java.controller;
 import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.java.entity.OaMeetingCustom;
 import org.java.entity.OaMettingplace;
+import org.java.entity.OaTeamEmail;
 import org.java.entity.OaTeamRole;
 import org.java.service.RoleService;
 import org.java.service.SysCalendarService;
@@ -42,43 +44,43 @@ public class UserController extends BaseController {
     private SysCalendarService sysCalendarService;
 
     @RequestMapping("/load")
-    public String first(){
-        //得到主体
-        Subject subject = SecurityUtils.getSubject();
+    public String first(Model model){
 
-        //从主体中，得到认证成功时，存放的"用户凭证"
-        Map<String,Object> user =(Map<String, Object>) subject.getPrincipal();
+        Subject subject = SecurityUtils.getSubject();//得到主体
 
-       /* if(Integer.parseInt(user.get("wo_role").toString())==info){
-            System.out.println("========================truetruetruetruetruetruetruetruetruetrue");
-        }else{
-            System.out.println("========================falsefalsefalsefalsefalsefalsefalsefalse");
-        }*/
-        //存放用户信息
-        session.setAttribute("worker",user);
+        Map<String,Object> user =(Map<String, Object>) subject.getPrincipal();//从主体中，得到认证成功时，存放的"用户凭证"
+
+
+        session.setAttribute("worker",user);//存放用户信息
+
         List<Map<String, Object>> personList = sysCalendarService.getDetpPersonList();
         session.setAttribute("personList",personList);
         List<OaMettingplace> placeAll = sysCalendarService.getPlaceAll();
         session.setAttribute("placeAll",placeAll);
-     /*   //存放菜单
-        List<Map<String,Object>> menus = (List<Map<String, Object>>) user.get("menus");
-        System.out.println(menus.size()+">>>>>>>>>>>");
-        model.addAttribute("menus",menus);*/
- /*       System.out.println("1111111111111111111111122222222222222222222222222222222222333333333333333333333333333333333"+"==========="+Integer.parseInt(user.get("wo_role").toString()));*/
+
+
+        List<Map<String,Object>> menus = (List<Map<String, Object>>) user.get("menus");//存放菜单
+        System.out.println(menus.size()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.>>>>>");
+        model.addAttribute("menus",menus);
+
         return "/main";
     }
 
 
+    @RequestMapping("/getMainInfo")
+    public String getMainInfo(){
+        List<Map<String,Object>> meetingAll = utilService.getMeetingAll();
+        request.setAttribute("meetingAll",meetingAll);
+        List<OaTeamEmail> emailAll = utilService.getEmailAll();
+        request.setAttribute("emailAll",emailAll);
+        return "/pjsp/programme";
+    }
+
     @RequestMapping("/loginInfo")
     public String loginInfo() throws Exception {
+
         List<OaTeamRole> roleList = roleService.getSelectType();
         session.setAttribute("roleList",roleList);
-        /*System.out.println("======================================loginController==============================================="+info+"````````````````````````");*/
-
-/*        if(workerRole==null&&workerRole.equals("")){
-            workerRole=1;
-        }*/
-        /*utilService.setRoleId(workerRole);*/
 
         //取消息内容，用于判断是因为没有登录进入的，还是登录失败进入的
         String msg = (String) request.getAttribute("shiroLoginFailure");
@@ -94,16 +96,6 @@ public class UserController extends BaseController {
         }
         return "/index";
     }
-/*
-
-    @RequestMapping("/showMainDetail")
-    public String showMainDetail() throws Exception{
-        return "";
-    }
-
-
-*/
-
 
     @RequestMapping("/exit")
     public String exit() throws Exception {

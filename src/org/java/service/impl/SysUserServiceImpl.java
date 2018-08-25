@@ -36,7 +36,22 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	@Override
+	public List<Map<String, Object>> getMenus(Integer roleId) {
+		return oaTeamWorkerCustomMapper.getMenus(roleId);
+	}
+
+	@Override
 	public List<OaTeamWorker> userByDeptId(Object[] dept) {
 		return oaTeamWorkerCustomMapper.userByDeptId(dept);
+	}
+
+	@Override
+	public List<String> getPermissions(String userId) {
+		return oaTeamWorkerCustomMapper.getPermissions(userId);
+	}
+
+	@Override
+	public List<Map<String, Object>> getWorkerList() {
+		return oaTeamWorkerCustomMapper.getWorkerList();
 	}
 }
