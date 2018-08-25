@@ -50,7 +50,6 @@ public class UserController extends BaseController {
 
         Map<String,Object> user =(Map<String, Object>) subject.getPrincipal();//从主体中，得到认证成功时，存放的"用户凭证"
 
-
         session.setAttribute("worker",user);//存放用户信息
 
         List<Map<String, Object>> personList = sysCalendarService.getDetpPersonList();
