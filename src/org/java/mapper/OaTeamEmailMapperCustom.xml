@@ -36,6 +36,9 @@
        SELECT  * from oa_team_email where em_id =#{emId}
     </select>
 
+    <select id="getEmailAll" resultMap="BaseResultMap">
+       SELECT  * FROM oa_team_email ORDER BY em_time DESC limit 0,6
+    </select>
     <resultMap id="BaseResultMap" type="org.java.entity.OaTeamEmail" >
         <id column="em_id" property="emId" jdbcType="VARCHAR" />
         <result column="em_title" property="emTitle" jdbcType="VARCHAR" />

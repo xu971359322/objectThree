@@ -43,7 +43,7 @@ public class ChatTalkController extends BaseController{
         // 将session销毁.
         session.invalidate();
         // 页面转向.
-        response.sendRedirect(request.getContextPath()+"/index.jsp");
+        response.sendRedirect(request.getContextPath()+"/chattalk.jsp");
 
         return null;
     }
@@ -127,7 +127,7 @@ public class ChatTalkController extends BaseController{
             if (existUser == null) {
                 // 用户登录失败
                 req.setAttribute("msg", "用户名或密码错误!");
-                return "/index.jsp";
+                return "/chattalk.jsp";
             } else {
                 // 用户登录成功
                 // 第一个BUG的解决:第二个用户登录后将之前的session销毁!

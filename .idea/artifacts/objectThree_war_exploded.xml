@@ -7,9 +7,11 @@
           <element id="module-output" name="objectThree" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="websocket-api" />
+          <element id="library" level="project" name="tomcat7-websocket" />
           <element id="library" level="project" name="activiti-bpmn-converter-5.13" />
-          <element id="library" level="project" name="shiro-core-1.2.3" />
-          <element id="library" level="project" name="commons-beanutils-1.8.3" />
+          <element id="library" level="project" name="shiro-ehcache-1.2.3" />
+          <element id="library" level="project" name="ehcache-core-2.6.11" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="objectThree/web/Web" />

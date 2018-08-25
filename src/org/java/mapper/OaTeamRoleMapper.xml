@@ -4,9 +4,11 @@
   <resultMap id="BaseResultMap" type="org.java.entity.OaTeamRole" >
     <id column="ro_id" property="roId" jdbcType="INTEGER" />
     <result column="ro_name" property="roName" jdbcType="VARCHAR" />
+    <result column="ro_available" property="roAvailable" jdbcType="INTEGER" />
+    <result column="ro_remark" property="roRemark"/>
   </resultMap>
   <sql id="Base_Column_List" >
-    ro_id, ro_name
+    ro_id, ro_name, ro_available,ro_remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -14,13 +16,20 @@
     from oa_team_role
     where ro_id = #{roId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <select id="getSelectType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oa_team_role
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from oa_team_role
     where ro_id = #{roId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.java.entity.OaTeamRole" >
-    insert into oa_team_role (ro_id, ro_name)
-    values (#{roId,jdbcType=INTEGER}, #{roName,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="org.java.entity.OaTeamRole">
+    insert into oa_team_role (ro_id, ro_name, ro_available,ro_remark
+      )
+    values (#{roId,jdbcType=INTEGER}, #{roName,jdbcType=VARCHAR}, #{roAvailable,jdbcType=INTEGER},#{roRemark}
+      )
   </insert>
   <insert id="insertSelective" parameterType="org.java.entity.OaTeamRole" >
     insert into oa_team_role
@@ -31,6 +40,9 @@
       <if test="roName != null" >
         ro_name,
       </if>
+      <if test="roAvailable != null" >
+        ro_available,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="roId != null" >
@@ -38,6 +50,9 @@
       </if>
       <if test="roName != null" >
         #{roName,jdbcType=VARCHAR},
+      </if>
+      <if test="roAvailable != null" >
+        #{roAvailable,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -47,12 +62,16 @@
       <if test="roName != null" >
         ro_name = #{roName,jdbcType=VARCHAR},
       </if>
+      <if test="roAvailable != null" >
+        ro_available = #{roAvailable,jdbcType=INTEGER},
+      </if>
     </set>
     where ro_id = #{roId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.java.entity.OaTeamRole" >
     update oa_team_role
-    set ro_name = #{roName,jdbcType=VARCHAR}
+    set ro_name = #{roName,jdbcType=VARCHAR},
+      ro_available = #{roAvailable,jdbcType=INTEGER}
     where ro_id = #{roId,jdbcType=INTEGER}
   </update>
 </mapper>

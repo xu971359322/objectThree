@@ -26,14 +26,18 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	@Override
-	public OaTeamWorker loginInfo(String username, String password){
-		OaTeamWorker worker = oaTeamWorkerCustomMapper.loginInfo(username,password);
-		System.out.println(worker+"=====================================");
-		if(worker!=null){
-			return worker;
-		}else{
+	public Map<String, Object> loginInfo(String username) {
+		List<Map<String, Object>> list = oaTeamWorkerCustomMapper.loginInfo(username);
+		if (list.isEmpty()) {
 			return null;
+		} else{
+			return list.get(0);
 		}
+	}
+
+	@Override
+	public List<Map<String, Object>> getMenus(Integer roleId) {
+		return oaTeamWorkerCustomMapper.getMenus(roleId);
 	}
 
 	@Override
@@ -42,7 +46,12 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	@Override
-	public List<Map<String,Object>> one(){
-		return oaTeamWorkerCustomMapper.one();
+	public List<String> getPermissions(String userId) {
+		return oaTeamWorkerCustomMapper.getPermissions(userId);
+	}
+
+	@Override
+	public List<Map<String, Object>> getWorkerList() {
+		return oaTeamWorkerCustomMapper.getWorkerList();
 	}
 }

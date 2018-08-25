@@ -2,6 +2,8 @@ package org.java.mapper;
 
 import org.java.entity.OaTeamRole;
 
+import java.util.List;
+
 public interface OaTeamRoleMapper {
     int deleteByPrimaryKey(Integer roId);
 
@@ -14,4 +16,6 @@ public interface OaTeamRoleMapper {
     int updateByPrimaryKeySelective(OaTeamRole record);
 
     int updateByPrimaryKey(OaTeamRole record);
+
+    List<OaTeamRole> getSelectType();
 }

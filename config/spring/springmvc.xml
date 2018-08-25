@@ -17,7 +17,7 @@
 
 
     <!--映射器和适配器-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
     <!--组件扫描 扫描所有注解-->
      <context:component-scan base-package="org.java.controller"/>
@@ -27,6 +27,17 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!--后缀-->
         <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 自定义参数绑定 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <!-- 转换器 -->
+        <property name="converters">
+            <list>
+                <bean class="org.java.controller.converters.CustomDateConverter"></bean>
+                <!-- 多个 -->
+            </list>
+        </property>
     </bean>
 <!--
 

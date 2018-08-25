@@ -19,7 +19,7 @@
         <div class="panel-heading">
             <h3 class="panel-title"><strong><span style="color:deepskyblue;vertical-align:middle">●</span>&nbsp;角色管理</strong></h3>
             <div class="right">
-                <input type="button" class="btn btn-info" value="增加角色信息"  onclick="location.href='${pageContext.request.contextPath}/pjsp/addRoleInfo.jsp'"/>
+                <input type="button" class="btn btn-info" value="增加角色信息"  onclick="location.href='${pageContext.request.contextPath}/system/getTeamRoleListBycondition.do'"/>
                 <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
                 <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
             </div>
@@ -39,7 +39,7 @@
                         <td>${info.roName}</td>
                         <td>${info.roAvailable}</td>
                         <td>
-                            <pre><a href="${pageContext.request.contextPath}/role/delRole.do?roId=${info.roId}"><span class="fontInfo">删除</span></a>      <a href="${pageContext.request.contextPath}/role/changeRole.do?roId=${info.roId}"> <span class="fontInfo">修改</span></a></pre>
+                            <pre><a href="${pageContext.request.contextPath}/system/delRoleInfo/${info.roId}.do"><span class="fontInfo">删除</span></a>    <a href="${pageContext.request.contextPath}/system/changeRole/${info.roId}.do?"> <span class="fontInfo">修改</span></a></pre>
                         </td>
                     </tr>
                 </c:forEach>

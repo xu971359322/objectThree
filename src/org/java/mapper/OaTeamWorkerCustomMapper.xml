@@ -16,7 +16,7 @@
         <result column="wo_deptId" property="woDeptid" jdbcType="INTEGER" />
         <result column="wo_phone" property="woPhone" jdbcType="VARCHAR" />
     </resultMap>
-    
+
     <select id="selManageByIdenty" resultMap="BaseResultMap">
         select * FROM oa_team_worker where wo_role =#{rid}
     </select>
@@ -28,13 +28,48 @@
     <select id="selDeptEmployee" resultMap="BaseResultMap">
         SELECT * FROM oa_team_worker WHERE wo_deptId =#{deptId} AND wo_role =5
     </select>
-    
-    <select id="loginInfo" resultMap="BaseResultMap">
-        select * from oa_team_worker where wo_loginName= #{username} and wo_loginPwd=#{password}
+
+
+    <select id="loginInfo" resultType="java.util.HashMap">
+      SELECT a.*,b.ro_name,b.ro_id AS roleId FROM oa_team_worker a,oa_team_role b,oa_worker_role c
+        WHERE
+        c.wo_id=a.wo_id
+        AND
+        c.ro_id=b.ro_id  AND a.wo_loginName=#{username}
     </select>
 
-    <select id="one" resultType="java.util.HashMap">
-        SELECT * FROM oa_team_role
+    <select id="getMenus" resultType="java.util.HashMap">
+        SELECT a.* FROM oa_team_permission a,oa_role_permission b
+        WHERE
+        b.permission_id=a.id
+        AND
+        a.TYPE='menu'
+        AND
+        b.role_id =#{roleId}
+    </select>
+
+    <select id="getPermissions" resultType="String">
+        SELECT otp.percode FROM oa_role_permission orp ,oa_team_permission otp
+        WHERE orp.permission_id=otp.id AND orp.role_id
+        IN (SELECT ore.ro_id FROM oa_worker_role owr,oa_team_role ore WHERE owr.ro_id=ore.ro_id AND owr.wo_id=#{userId})
+    </select>
+
+    <!--这种写法，用于一个用户同时有多种角色
+
+    <select id="loadMenu" resultType="m">
+
+  SELECT * FROM sys_permission WHERE TYPE='menu' AND id IN
+          (SELECT permission_id  FROM sys_role_permission WHERE role_id IN
+              (SELECT role_id FROM sys_user_role WHERE user_id=#{id})
+          )
+  </select>
+
+     -->
+
+
+
+    <select id="getWorkerList" resultType="java.util.HashMap">
+        SELECT wo_id,wo_role,wo_name,de_name,`or`.ro_name FROM oa_team_worker ow,oa_team_dept od,oa_team_role `or` WHERE ow.wo_deptId=od.de_id AND `or`.ro_id=ow.wo_role
     </select>
 
     <select id="userByDeptId" resultMap="BaseResultMap" >

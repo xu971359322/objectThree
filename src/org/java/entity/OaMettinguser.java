@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaMettinguser {
+import java.io.Serializable;
+
+public class OaMettinguser implements Serializable{
     private Integer muId;
 
     private Integer mId;

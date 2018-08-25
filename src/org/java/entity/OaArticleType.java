@@ -1,6 +1,8 @@
 package org.java.entity;
 
-public class OaArticleType {
+import java.io.Serializable;
+
+public class OaArticleType implements Serializable{
     private Integer bbsTypeId;
 
     private String bbsTypeName;

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <!doctype html>
 <html lang="en">
 
@@ -94,25 +94,39 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
-						<li><a href="email.jsp" class=""> <i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
-						<li><a href="office.jsp" class=""> <i class="lnr lnr-chart-bars"></i> <span>公文管理</span></a></li>
-						<li><a href="resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
-						<li><a href="bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
-						<li><a href="attendance.jsp" class=""><i class="lnr lnr-text-format"></i><span>考勤管理</span></a></li>
-						<li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>  <span>系统管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav" id="menuSideBar">
-									<li mid="tab1" funurl="${pageContext.request.contextPath}/pjsp/roleManger.jsp"><a tabindex="-1" href="javascript:void(0);">角色管理</a></li>
-									<li mid="tab2" funurl="${pageContext.request.contextPath}/pjsp/assignManger.jsp"><a tabindex="-1" href="javascript:void(0);">分配角色</a></li>
-									<li mid="tab3" funurl="${pageContext.request.contextPath}/pjsp/deptManger.jsp"><a tabindex="-1" href="javascript:void(0);">部门管理</a></li>
-									<li mid="tab4" funurl="${pageContext.request.contextPath}/pjsp/"><a tabindex="-1" href="javascript:void(0);">查询员工</a></li>
-									<li mid="tab5" funurl="${pageContext.request.contextPath}/pjsp/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">增加员工</a></li>
-									<li mid="tab6" funurl="${pageContext.request.contextPath}/xu/flow/depolyee.jsp"><a tabindex="-1" href="javascript:void(0);">流程部署</a></li>
-									<li mid="tab7" funurl="${pageContext.request.contextPath}/process/queryProcessDefinition.do"><a tabindex="-1" href="javascript:void(0);">查看流程定义</a></li>
-								</ul>
-							</div>
-						</li>
+						<shiro:hasPermission name="personal:manager">
+							<li><a href="${pageContext.request.contextPath}/main.jsp" class=""><i class="lnr lnr-home"></i><span>个人办公</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="email:manager">
+							<li><a href="${pageContext.request.contextPath}/email.jsp" class=""><i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="meeting:manager">
+							<li><a href="${pageContext.request.contextPath}/office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="resource:manager">
+							<li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="company:manager">
+							<li><a href="${pageContext.request.contextPath}/bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="check:manager">
+							<li><a href="${pageContext.request.contextPath}/attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="system:manager">
+							<li><a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i>  <span>系统管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+								<div id="subPages" class="collapse ">
+									<ul class="nav" id="menuSideBar">
+										<li mid="tab1" funurl="${pageContext.request.contextPath}/pjsp/roleManger.jsp"><a tabindex="-1" href="javascript:void(0);">角色管理</a></li>
+										<li mid="tab2" funurl="${pageContext.request.contextPath}/system/getWorkerList.do"><a tabindex="-1" href="javascript:void(0);">分配角色</a></li>
+										<li mid="tab3" funurl="${pageContext.request.contextPath}/pjsp/deptManger.jsp"><a tabindex="-1" href="javascript:void(0);">部门管理</a></li>
+										<li mid="tab4" funurl="${pageContext.request.contextPath}/pjsp/"><a tabindex="-1" href="javascript:void(0);">查询员工</a></li>
+										<li mid="tab5" funurl="${pageContext.request.contextPath}/pjsp/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">增加员工</a></li>
+										<li mid="tab6" funurl="${pageContext.request.contextPath}/xu/flow/depolyee.jsp"><a tabindex="-1" href="javascript:void(0);">流程部署</a></li>
+										<li mid="tab7" funurl="${pageContext.request.contextPath}/process/queryProcessDefinition.do"><a tabindex="-1" href="javascript:void(0);">查看流程定义</a></li>
+									</ul>
+								</div>
+							</li>
+						</shiro:hasPermission>
 					</ul>
 				</nav>
 			</div>

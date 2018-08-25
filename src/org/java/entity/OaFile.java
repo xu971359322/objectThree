@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OaFile {
+public class OaFile implements Serializable {
     private Integer fId;
 
     private String fName;

@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OaDocument {
+public class OaDocument implements Serializable {
     private Integer doId;
 
     private String doTitle;

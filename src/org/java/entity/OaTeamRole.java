@@ -1,11 +1,23 @@
 package org.java.entity;
 
-public class OaTeamRole {
+import java.io.Serializable;
+
+public class OaTeamRole implements Serializable{
     private Integer roId;
 
     private String roName;
 
     private Integer roAvailable;
+
+    private String roRemark;
+
+    public String getRoRemark() {
+        return roRemark;
+    }
+
+    public void setRoRemark(String roRemark) {
+        this.roRemark = roRemark;
+    }
 
     public Integer getRoId() {
         return roId;

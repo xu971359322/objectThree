@@ -80,7 +80,7 @@ public class QQEmailController extends BaseController{
             System.out.println("people:"+s);
         }
         for (String s : arr) {
-            System.out.println("arr:"+s);
+            System.out.println("arr:" + s);
         }
         SendEmailUtil.sendSimpleMail(arr,content,title);
         request.setAttribute("err","发送成功");
@@ -103,5 +103,4 @@ public class QQEmailController extends BaseController{
     public String toString() {
         return super.toString();
     }
-
 }

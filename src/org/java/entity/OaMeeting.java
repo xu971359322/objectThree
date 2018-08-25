@@ -1,8 +1,9 @@
 package org.java.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OaMeeting {
+public class OaMeeting implements Serializable {
     private Integer mId;
 
     private String mTitle;
@@ -16,6 +17,16 @@ public class OaMeeting {
     private String mContent;
 
     private String woId;
+
+    private Integer mstate;
+
+    public Integer getMstate() {
+        return mstate;
+    }
+
+    public void setMstate(Integer mstate) {
+        this.mstate = mstate;
+    }
 
     public Integer getmId() {
         return mId;
@@ -71,5 +82,19 @@ public class OaMeeting {
 
     public void setWoId(String woId) {
         this.woId = woId == null ? null : woId.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "OaMeeting{" +
+                "mId=" + mId +
+                ", mTitle='" + mTitle + '\'' +
+                ", mpId=" + mpId +
+                ", mBegintime=" + mBegintime +
+                ", eEndtime=" + eEndtime +
+                ", mContent='" + mContent + '\'' +
+                ", woId='" + woId + '\'' +
+                ", mstate=" + mstate +
+                '}';
     }
 }

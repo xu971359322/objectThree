@@ -70,6 +70,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${sessionScope.worker.wo_name}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>${worker.woName}</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
@@ -84,30 +85,59 @@
 		</nav>
 		
 		<div class="content">
-					<div class="container">		
-			 		<div id="sidebar-nav" class="sidebar" ><!-- style="display:none;" -->
+					<div class="container">
+			 		<div id="sidebar-nav" class="sidebar">
 						<div class="sidebar-scroll">
 							<nav>
 								<ul class="nav">
+								<shiro:hasPermission name="personal:manager">
 									<li>
 										<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>个人办公</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-										<div id="subPages" class="collapse ">
+										<div id="subPages" class="collapse">
 											<ul class="nav" id="menuSideBar">
 												<li mid="tab1" funurl="${pageContext.request.contextPath}/resource.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
 												<li mid="tab2" funurl="${pageContext.request.contextPath}/report/selReportById.do"><a tabindex="-1" href="javascript:void(0);">我的报告</a></li>
 												<li mid="tab3" funurl="${pageContext.request.contextPath}/report/findTaskByName.do"><a tabindex="-1" href="javascript:void(0);">办理任务</a></li>
 												<li mid="tab4" funurl="${pageContext.request.contextPath}/report/queryGroupTask.do"><a tabindex="-1" href="javascript:void(0);">待办任务</a></li>
 												<li mid="tab5" funurl="${pageContext.request.contextPath}/demo.do"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
+												<li mid="tab1" funurl="${pageContext.request.contextPath}/pjsp/index.jsp"><a tabindex="-1" href="javascript:void(0);">日程安排</a></li>
+												<li mid="tab2" funurl="${pageContext.request.contextPath}/admin.jsp"><a tabindex="-1" href="javascript:void(0);">申请报告</a></li>
+												<li mid="tab3" funurl="${pageContext.request.contextPath}/bbs.jsp"><a tabindex="-1" href="javascript:void(0);">办理任务</a></li>
+												<li mid="tab4" funurl="${pageContext.request.contextPath}/pjsp/chattalk.jsp"><a tabindex="-1" href="javascript:void(0);">在线交流<span style="color:red;">&nbsp;&nbsp;New</span></a></li>
 											</ul>
 										</div>
 									</li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="email:manager">
 									<li><a href="${pageContext.request.contextPath}/email.jsp" class=""><i class="lnr lnr-code"></i><span>邮件管理</span></a></li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="meeting:manager">
 									<li><a href="${pageContext.request.contextPath}/office.jsp" class=""><i class="lnr lnr-chart-bars"></i> <span>会议管理</span></a></li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="resource:manager">
 									<li><a href="${pageContext.request.contextPath}/resource.jsp" class=""><i class="lnr lnr-cog"></i> <span>资源管理</span></a></li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="company:manager">
 									<li><a href="${pageContext.request.contextPath}/bbs.jsp" class=""><i class="lnr lnr-alarm"></i> <span>公司论坛</span></a></li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="check:manager">
 									<li><a href="${pageContext.request.contextPath}/attendance.jsp" class=""><i class="lnr lnr-text-format"></i> <span>考勤管理</span></a></li>
+								</shiro:hasPermission>
+								<shiro:hasPermission name="system:manager">
 									<li><a href="${pageContext.request.contextPath}/admin.jsp" class=""><i class="lnr lnr-dice"></i> <span>系统管理</span></a></li>
+								</shiro:hasPermission>
 								</ul>
+								<%--
+
+
+								<c:forEach items="${requestScope.menus }" var="m">
+									<a href="${pageContext.request.contextPath}${m.url }">${m.NAME}</a>
+									<br>
+								</c:forEach>
+
+
+
+								--%>
 							</nav>
 						</div>
 					</div>
