@@ -26,26 +26,23 @@
 </head>
 <body>
 <div class="container" class="col-md-2 column" style="width: 98%">
-            <div class="row clearfix" class="col-md-2 column" >
-                <div class="col-md-2 column" style="padding-left: 10px">
-                    <ul class="lis">
+            <div class="row clearfix" class="col-md-1 column" >
+                <div class="col-md-2 column" style="padding-left: -10px">
+                    <ul class="lis" style="list-style:none;">
                         <li>
                             <a href="${pageContext.request.contextPath}/resou/resouAll.do" target="myfra">公司所有文档</a><br/><br/>
                         </li>
                         <li>
-                            <a href="">私密文档</a><br/><br/>
+                            <a href="${pageContext.request.contextPath}/resou/selShowAll.do" target="myfra">私密文档</a><br/><br/>
                         </li>
                         <li>
-                            <a href="">我的文档</a><br/><br/>
+                            <a href="${pageContext.request.contextPath}/resou/myWord.do" target="myfra">我的文档</a><br/><br/>
                         </li>
                         <li>
                             <a href="${pageContext.request.contextPath}/resou/Load.do" target="myfra">文档上传</a><br/><br/>
                         </li>
                         <li>
-                            <a href="">文档下载</a><br/><br/>
-                        </li>
-                        <li>
-                            <a href="">文档回收站</a><br/><br/>
+                            <a href="${pageContext.request.contextPath}/resou/dustbin.do" target="myfra">文档回收站</a><br/><br/>
                         </li>
                     </ul>
                 </div>

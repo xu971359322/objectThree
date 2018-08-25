@@ -11,14 +11,52 @@
         <result column="sel_uid" property="selUid" jdbcType="VARCHAR"/>
         <result column="f_mess" property="fMess" jdbcType="VARCHAR"/>
         <result column="f_length" property="fLenth" jdbcType="VARCHAR"/>
-        <result column="f_downCount" property="fdownCount" jdbcType="VARCHAR"/>
+        <result column="f_downCount" property="fdownCount" jdbcType="INTEGER"/>
+        <result column="f_record" property="f_record" jdbcType="INTEGER"/>
+        <result column="f_dustbin" property="f_dustbin" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="oaReouAll" resultMap="BaseResultMap">
-        SELECT f.* FROM oa_file f  WHERE f.f_stauts = 0 AND f.sel_uid = ''
+        SELECT f.* FROM oa_file f  WHERE f.f_stauts = 0 AND f.sel_uid = '' AND f.f_record=0
     </select>
     
     <insert id="oaResouAdd" parameterType="m">
-        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess},#{fLenth},#{down})
+        INSERT oa_file VALUE (NULL ,#{f_name},#{f_time},#{type},#{f_status},#{wId},#{sel_uid},#{fMess},#{fLenth},#{down},#{f_record})
     </insert>
+
+    <update id="deleteFile" parameterType="m">
+        UPDATE oa_file SET f_stauts='1' WHERE f_id=#{fid}
+    </update>
+
+    <select id="selectFile" resultMap="BaseResultMap" parameterType="m">
+        select * from oa_file f where f.f_id=#{fid};
+    </select>
+
+    <select id="myWord" resultMap="BaseResultMap" parameterType="m">
+        select * from oa_file f where f.wo_id=#{userId} AND f.sel_uid = '';
+    </select>
+
+    <select id="downFileCount" parameterType="m">
+        UPDATE oa_file SET f_downCount =f_downCount+1 WHERE f_id=#{fid}
+    </select>
+
+    <update id="cancelFile" parameterType="m">
+        UPDATE oa_file set f_record = 1 where f_id=#{fid}
+    </update>
+
+    <update id="cancelFile2" parameterType="m">
+        UPDATE oa_file set f_record = 0 where f_id=#{fid}
+    </update>
+
+    <select id="dustbin" resultMap="BaseResultMap">
+        SELECT f.* FROM oa_file f  WHERE f.f_stauts = 1 AND f.f_record=0
+    </select>
+
+    <update id="dustbinRecover" parameterType="m">
+        UPDATE oa_file SET f_stauts='0' WHERE f_id=#{fid}
+    </update>
+
+    <select id="selShowAll" resultMap="BaseResultMap" parameterType="m">
+        select * from oa_file f where f.sel_uid=#{userId} AND f.f_stauts = 0 AND f.f_record=0;
+    </select>
 
 </mapper>

@@ -22,7 +22,7 @@
 
 
     <style type="text/css">
-        table,tr,td,th{
+        table{
             text-align: center;
         }
     </style>
@@ -33,12 +33,11 @@
             <!-- BASIC TABLE -->
             <div class="panel" style="width: 99%">
                 <div class="panel-heading">
-                    <h3 class="panel-title">公司所有文档（不包括私密文档）</h3>
+                    <h3 class="panel-title">回收站</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
+                    <div class="table-responsive" scroll="no">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-
                             <thead>
                             <tr>
                                 <th>编号</th>
@@ -46,12 +45,13 @@
                                 <th>文件类型</th>
                                 <th>文件大小</th>
                                 <th>文件上传者</th>
-                                <th>上传时间</th>
+                                <th>加入回收站时间</th>
+                                <th>下载次数</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${sessionScope.resouShowAllList}" var="li" varStatus="k">
+                            <c:forEach items="${requestScope.dustbinListAll}" var="li" varStatus="k">
                                 <tr>
                                     <td>${li.fid+1}</td>
                                     <td>${li.fname}</td>
@@ -63,17 +63,15 @@
                                             value="${li.ftime}"
                                             dateStyle="default"
                                     /></td>
-                                    <td>每天</td>
+                                    <td>${li.count}</td>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath }/resou/dustbinRecover.do?fileId=${li.fileId}"> 恢复文件</a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
 
                         </table>
-                        <div class="panel-heading" style="float: right;">
-
-                            <a href="${pageContext.request.contextPath}/resou/Load.do"><button type="button" class="btn btn-default">上传新文件</button></a>
-
-                        </div>
                     </div>
                 </div>
 
@@ -84,8 +82,8 @@
 
 </div>
 <script src="${pageContext.request.contextPath }/assets/vendor/jquery/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath }/resource/js/assets/js/dataTables/jquery.dataTables.js"></script>
-<script src="${pageContext.request.contextPath }/resource/js/assets/js/dataTables/dataTables.bootstrap.js"></script>
+<script src="${pageContext.request.contextPath }/js/dataTables/jquery.dataTables.js"></script>
+<script src="${pageContext.request.contextPath }/js/dataTables/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
     /*JavaScript
     var now = new Date();

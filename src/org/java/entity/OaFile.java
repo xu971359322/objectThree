@@ -23,6 +23,11 @@ public class OaFile {
 
     private Integer fdownCount;
 
+    private String path;
+
+    private Integer f_record;
+
+    private String f_dustbin;
 
     public Integer getfId() {
         return fId;
@@ -103,5 +108,29 @@ public class OaFile {
 
     public void setfLenth(Integer fLenth) {
         this.fLenth = fLenth;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Integer getF_record() {
+        return f_record;
+    }
+
+    public void setF_record(Integer f_record) {
+        this.f_record = f_record;
+    }
+
+    public String getF_dustbin() {
+        return f_dustbin;
+    }
+
+    public void setF_dustbin(String f_dustbin) {
+        this.f_dustbin = f_dustbin;
     }
 }

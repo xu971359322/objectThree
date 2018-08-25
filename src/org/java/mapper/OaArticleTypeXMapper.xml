@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaArticleTypeXMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaArticleType" >
+    <id column="bbs_type_id" property="bbsTypeId" jdbcType="INTEGER" />
+    <result column="bbs_type_name" property="bbsTypeName" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="articleShowAll" resultMap="BaseResultMap">
+    SELECT * from oa_article_type
+  </select>
+  <select id="articleShowAllCount" resultMap="INTEGER" parameterType="java.lang.Integer">
+    SELECT COUNT(*) from oa_article_type where bbs_type_id =#{tid}
+  </select>
+</mapper>
