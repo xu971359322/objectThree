@@ -28,7 +28,7 @@ public class LeaveController extends BaseController {
     public String claimTask(String taskId){
         OaTeamWorker worker = (OaTeamWorker) session.getAttribute("worker");
         leaveService.claimTask(taskId,worker.getWoName());
-
+        System.out.println();
         return "redirect:queryGroupTask.do";
     }
 
