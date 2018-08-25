@@ -24,7 +24,7 @@ import java.util.*;
 
 //资源管理Controller
 @Controller
-@RequestMapping("")
+@RequestMapping("/resou")
 public class ResouController extends BaseController {
 
     @Autowired
@@ -310,9 +310,9 @@ public class ResouController extends BaseController {
 
     @RequestMapping("/artile")
     public String artileShowAll(){
-        //List<Map<String,Object>> listType = resouService.articleShowAll();
-
-        //request.setAttribute("articleList",listType);
+        List<Map<String,Object>> listType = resouService.articleShowAll();
+        System.out.println("进入");
+        request.setAttribute("articleList",listType);
         return "/resource/artileShow";
     }
 

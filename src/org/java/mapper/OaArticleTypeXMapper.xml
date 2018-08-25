@@ -8,7 +8,4 @@
   <select id="articleShowAll" resultMap="BaseResultMap">
     SELECT * from oa_article_type
   </select>
-  <select id="articleShowAllCount" resultMap="INTEGER" parameterType="java.lang.Integer">
-    SELECT COUNT(*) from oa_article_type where bbs_type_id =#{tid}
-  </select>
 </mapper>

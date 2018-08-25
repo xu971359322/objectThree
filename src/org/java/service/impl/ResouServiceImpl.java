@@ -3,6 +3,7 @@ package org.java.service.impl;
 import org.java.entity.OaArticleType;
 import org.java.entity.OaFile;
 import org.java.entity.OaTeamWorker;
+import org.java.mapper.OaArticleMapper;
 import org.java.mapper.OaArticleTypeXMapper;
 import org.java.mapper.OaResouMapper;
 import org.java.mapper.OaTeamWorkerMapper;
@@ -24,6 +25,8 @@ public class ResouServiceImpl implements ResouService {
     @Autowired
     private OaArticleTypeXMapper OaArticleTypeXMapper;
 
+    @Autowired
+    protected org.java.mapper.OaArticleMapper OaArticleMapper;
 
     @Override
     public List<OaTeamWorker> wordUserAll() {
@@ -104,7 +107,7 @@ public class ResouServiceImpl implements ResouService {
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("id",t.getBbsTypeId());
             map.put("typeName",t.getBbsTypeName());
-            map.put("count",OaArticleTypeXMapper.articleShowAllCount(t.getBbsTypeId()));
+            map.put("count",OaArticleMapper.articleShowAllCount(t.getBbsTypeId()).size());
             listM.add(map);
         }
 
