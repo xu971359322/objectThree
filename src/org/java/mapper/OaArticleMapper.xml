@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.mapper.OaArticleMapper" >
+  <resultMap id="BaseResultMap" type="org.java.entity.OaArticleTopic" >
+    <id column="bbs_topic_id" property="bbsTopicId" jdbcType="INTEGER" />
+    <result column="bbs_topic_title" property="bbsTopicTitle" jdbcType="VARCHAR" />
+    <result column="bbs_topic_content" property="bbsTopicContent" jdbcType="VARCHAR" />
+    <result column="bbs_topic_time" property="bbsTopicTime" jdbcType="TIMESTAMP" />
+    <result column="wo_id" property="woId" jdbcType="VARCHAR" />
+    <result column="bbs_type_id" property="bbsTypeId" jdbcType="INTEGER" />
+  </resultMap>
+  <select id="articleShowAllCount" resultMap="BaseResultMap" parameterType="m">
+    SELECT COUNT(*) from oa_article_type where bbs_type_id =#{tid}
+  </select>
+</mapper>
