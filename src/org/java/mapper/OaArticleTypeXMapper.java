@@ -8,4 +8,7 @@ import java.util.Map;
 public interface OaArticleTypeXMapper {
 
     public List<OaArticleType> articleShowAll();
+
+    public List<Map<String,Object>> postType(String tid);
+
 }

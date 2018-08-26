@@ -107,15 +107,16 @@ public class ResouServiceImpl implements ResouService {
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("id",t.getBbsTypeId());
             map.put("typeName",t.getBbsTypeName());
-            map.put("count",OaArticleMapper.articleShowAllCount(t.getBbsTypeId()).size());
+            map.put("count",OaArticleMapper.articleShowAllCount(t.getBbsTypeId()).size()-1);
             listM.add(map);
         }
 
         return listM;
     }
-
-
-
+    @Override
+    public List<Map<String,Object>> postType(String tid){
+        return OaArticleTypeXMapper.postType(tid);
+    }
 
 
 

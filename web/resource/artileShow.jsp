@@ -20,12 +20,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="${pageContext.request.contextPath }/assets/img/favicon.png">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/js/dataTables/dataTables.bootstrap.css">
 
-
-    <style type="text/css">
-        table{
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 <!-- MAIN CONTENT -->
@@ -36,114 +30,28 @@
             <h3 class="panel-title">公司论坛主页</h3>
         </div>
         <div class="panel-body">
-            <div class="container">
                 <div class="row clearfix">
-                    <div class="col-md-12 column">
                         <table class="table">
                             <thead>
-                            <tr>
-                                <th>
-                                    编号
-                                </th>
-                                <th>
-                                    产品
-                                </th>
-                                <th>
-                                    交付时间
-                                </th>
-                                <th>
-                                    状态
-                                </th>
+                            <tr class="warning">
+                                <th> 帖子类型 </th>
+                                <th>帖子类型</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Default
-                                </td>
-                            </tr>
-                            <tr class="success">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    01/04/2012
-                                </td>
-                                <td>
-                                    Approved
-                                </td>
-                            </tr>
-                            <tr class="error">
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    02/04/2012
-                                </td>
-                                <td>
-                                    Declined
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    03/04/2012
-                                </td>
-                                <td>
-                                    Pending
-                                </td>
-                            </tr>
-                            <tr class="info">
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    TB - Monthly
-                                </td>
-                                <td>
-                                    04/04/2012
-                                </td>
-                                <td>
-                                    Call in to confirm
-                                </td>
-                            </tr>
+                            <c:forEach items="${requestScope.articleList}" var="li">
+                                <tr>
+                                    <td>
+                                        <a href="${pageContext.request.contextPath }/resou/postType.do?tid=${li.id}"> ${li.typeName}</a>
+                                    </td>
+                                    <td>
+                                        ${li.count}
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
-                    </div>
-                </div>
             </div>
-                <c:forEach items="${requestScope.articleList}" var="li">
-                    <tr>
-                        <div>
-                            <td>
-                                 ${li.typeName}
-                            </td>
-                                帖子总数${li.count}
-                            进入
-                        </div>
-                    </tr>
-                </c:forEach>
-            </table>
         </div>
 
 

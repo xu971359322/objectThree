@@ -59,7 +59,7 @@
                                     value="${li.ftime}"
                                     dateStyle="default"
                             /></td>
-                            <td><a href="${pageContext.request.contextPath }/resou/downFile.do?fileId=${li.fileId}">文档下载</a> </td>
+                            <td><a href="${pageContext.request.contextPath }/resou/downFile.do?fileId=${li.fileId}"><i class="glyphicon glyphicon-save"></i></a> </td>
                         </tr>
                     </c:forEach>
                     </tbody>

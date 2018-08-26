@@ -8,4 +8,8 @@
   <select id="articleShowAll" resultMap="BaseResultMap">
     SELECT * from oa_article_type
   </select>
+  
+  <select id="postType" resultType="java.util.HashMap" parameterType="m">
+     SELECT pic.*,wor.wo_name FROM oa_article_topic pic,oa_team_worker wor WHERE pic.wo_id = wor.wo_id AND bbs_type_id = #{tid}
+  </select>
 </mapper>

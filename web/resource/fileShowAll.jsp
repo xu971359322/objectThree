@@ -63,7 +63,7 @@
                                             dateStyle="default"
                                     /></td>
                                     <td>${li.count}</td>
-                                    <td><a href="${pageContext.request.contextPath }/resou/downFile.do?fileId=${li.fileId}" onclick="window.location.href='${pageContext.request.contextPath}/resou/resouAll.do'">文档下载</a> &nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/resou/deleteFile.do?fileId=${li.fileId}" > 加入回收站</a></td>
+                                    <td><a href="${pageContext.request.contextPath }/resou/downFile.do?fileId=${li.fileId}"><i class="glyphicon glyphicon-save"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath }/resou/deleteFile.do?fileId=${li.fileId}" ><i class="glyphicon glyphicon-trash"></i></a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

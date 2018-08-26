@@ -65,7 +65,7 @@
                                     /></td>
                                     <td>${li.count}</td>
                                     <td>
-                                        <a href="${pageContext.request.contextPath }/resou/dustbinRecover.do?fileId=${li.fileId}"> 恢复文件</a>
+                                        <a href="${pageContext.request.contextPath }/resou/dustbinRecover.do?fileId=${li.fileId}"><i class="glyphicon glyphicon-share-alt"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

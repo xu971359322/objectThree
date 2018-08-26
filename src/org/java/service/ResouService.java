@@ -45,7 +45,7 @@ public interface ResouService {
 
     public List<Map<String,Object>> articleShowAll();
 
-
+    public List<Map<String,Object>> postType(String tid);
 
 
 

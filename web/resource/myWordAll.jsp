@@ -75,10 +75,10 @@
                                     </td>
                                     <td>
                                         <c:if test="${li.record==0}">
-                                            <a href="${pageContext.request.contextPath }/resou/cancelFile.do?fileId=${li.fileId}"> 取消分享</a>
+                                            <a href="${pageContext.request.contextPath }/resou/cancelFile.do?fileId=${li.fileId}"><i class="glyphicon glyphicon-remove-circle"></i></a>
                                         </c:if>
                                         <c:if test="${li.record==1}">
-                                            <a href="${pageContext.request.contextPath }/resou/cancelFile2.do?fileId=${li.fileId}"> 恢复上传</a>
+                                            <a href="${pageContext.request.contextPath }/resou/cancelFile2.do?fileId=${li.fileId}"><i class="glyphicon glyphicon-share-alt"></i></a>
                                         </c:if>
                                     </td>
                                 </tr>
